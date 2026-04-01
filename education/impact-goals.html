@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Impact & Reduction Goals | EcoConnect</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+body {
+    background: linear-gradient(to right, #f4f9f6, #e6f4ec);
+}
+
+/* GRID */
+
+.goal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.goal-grid-center {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* CARD DESIGN */
+
+.goal-card {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: 0.4s ease;
+    width: 260px;
+}
+
+.goal-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(27, 127, 76, 0.3);
+}
+
+.goal-card h3 {
+    color: #1b7f4c;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.goal-card p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+      
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(to right, #1b7f4c, #145a32);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+        }
+
+        .hero p {
+            margin-top: 15px;
+            font-size: 18px;
+        }
+
+        /* CONTENT */
+        .container {
+            padding: 60px 10%;
+        }
+
+        .goal-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .goal-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transition: 0.3s ease;
+        }
+
+        .goal-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .goal-card h3 {
+            color: #1b7f4c;
+            margin-bottom: 15px;
+        }
+
+        .goal-card p {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #0f5132;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        @media(max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <section class="hero">
+        <h1>📊 Impact & Reduction Goals</h1>
+        <p>Our roadmap towards building a cleaner and more sustainable future.</p>
+    </section>
+
+    <div class="container">
+
+    <div class="goal-grid">
+
+        <!-- First Row (4 Cards) -->
+        <div class="goal-card">
+            <h3>♻ Reduce Plastic Waste</h3>
+            <p>Encouraging reusable alternatives and responsible disposal practices.</p>
+        </div>
+
+        <div class="goal-card">
+            <h3>🌿 Increase Urban Green Coverage</h3>
+            <p>Expanding tree plantation and green restoration initiatives.</p>
+        </div>
+
+        <div class="goal-card">
+            <h3>🧹 Improve Waste Management</h3>
+            <p>Promoting smart segregation and efficient recycling systems.</p>
+        </div>
+
+        <div class="goal-card">
+            <h3>📚 Strengthen Environmental Education</h3>
+            <p>Conducting workshops and awareness campaigns for citizens.</p>
+        </div>
+
+    </div>
+
+    <!-- Centered Last Two Cards -->
+    <div class="goal-grid-center">
+
+        <div class="goal-card">
+            <h3>🏙 Promote Sustainable Communities</h3>
+            <p>Encouraging active participation in long-term sustainability drives.</p>
+        </div>
+
+        <div class="goal-card">
+            <h3>⚡ Adopt Green Technologies</h3>
+            <p>Supporting eco-friendly innovations to reduce environmental impact.</p>
+        </div>
+
+    </div>
+
+</div>
+
+
+    <footer>
+        © 2026 EcoConnect | Sustainability Starts With Us
+    </footer>
+
+</body>
+</html>

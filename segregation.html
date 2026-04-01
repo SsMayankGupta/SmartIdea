@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Waste Segregation Guide</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<section class="seg-section">
+  <h2>Smart Waste Segregation</h2>
+
+  <select id="item" onchange="checkWaste()">
+    <option value="">Select an item</option>
+    <option value="wet">Banana Peel</option>
+    <option value="plastic">Plastic Bottle</option>
+    <option value="ewaste">Battery</option>
+  </select>
+
+  <p id="result" style="margin-top:20px;font-weight:bold"></p>
+</section>
+
+<script>
+function checkWaste() {
+  const value = document.getElementById("item").value;
+  const result = document.getElementById("result");
+
+  if (value === "wet") result.innerText = "Wet Waste Bin 🍃";
+  if (value === "plastic") result.innerText = "Dry / Plastic Bin ♻️";
+  if (value === "ewaste") result.innerText = "E-Waste Collection 📱";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recycling Education | EcoConnect</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f4f9f6, #e6f4ec);
+            color: #333;
+        }
+
+        nav {
+            background: #1b7f4c;
+            padding: 15px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav h2 {
+            color: white;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                        url("images/education-hero.jpg");
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 120px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+        }
+
+        .hero p {
+            margin-top: 15px;
+            font-size: 18px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section {
+            padding: 80px 10%;
+            text-align: center;
+        }
+
+        .section h2 {
+            color: #1b7f4c;
+            margin-bottom: 20px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 45px rgba(27,127,76,0.25);
+        }
+
+        .card h3 {
+            color: #1b7f4c;
+            margin-bottom: 15px;
+        }
+
+        .cta {
+            background: #1b7f4c;
+            color: white;
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .cta h2 {
+            margin-bottom: 15px;
+        }
+
+        .cta a {
+            display: inline-block;
+            padding: 14px 28px;
+            background: white;
+            color: #1b7f4c;
+            border-radius: 30px;
+            text-decoration: none;
+            margin-top: 20px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .cta a:hover {
+            background: #e6f4ec;
+            transform: translateY(-3px);
+        }
+
+        footer {
+            background: #0f5132;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        @media(max-width:768px){
+            .section {
+                padding: 50px 20px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <h2>EcoConnect</h2>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="commercial-programs.html">Commercial</a></li>
+        <li><a href="impact-goals.html">Impact</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+</nav>
+
+<section class="hero">
+    <h1>📘 Recycling Education</h1>
+    <p>
+        Learn the importance of responsible waste management and how recycling
+        helps protect our environment, conserve resources, and build a sustainable future.
+    </p>
+</section>
+
+<section class="section">
+    <h2>Why Recycling Matters</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>🌍 Protects Environment</h3>
+            <p>
+                Recycling reduces landfill waste, lowers pollution, and conserves natural ecosystems.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>♻ Saves Resources</h3>
+            <p>
+                Reusing materials reduces the need for raw resource extraction and energy consumption.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>⚡ Saves Energy</h3>
+            <p>
+                Manufacturing products from recycled materials uses significantly less energy.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🏭 Reduces Carbon Footprint</h3>
+            <p>
+                Recycling lowers greenhouse gas emissions and supports climate action.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section class="section">
+    <h2>How You Can Contribute</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>📦 Segregate Waste</h3>
+            <p>
+                Separate paper, plastic, metal, and e-waste for proper recycling.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🚯 Reduce Usage</h3>
+            <p>
+                Minimize single-use plastics and choose reusable alternatives.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🔄 Reuse Materials</h3>
+            <p>
+                Extend product life cycles by reusing and repurposing items.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🤝 Spread Awareness</h3>
+            <p>
+                Educate others about sustainable practices and environmental responsibility.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+<footer>
+    © 2026 EcoConnect | Recycling Education Initiative
+</footer>
+
+</body>
+</html>

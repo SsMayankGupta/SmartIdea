@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Commercial Programs | EcoConnect</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f4f9f6, #e6f4ec);
+            color: #333;
+        }
+
+        nav {
+            background: #1b7f4c;
+            padding: 15px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav h2 {
+            color: white;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                        url("images/commercial-hero.jpg");
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 130px 20px;
+        }
+
+        .hero h1 {
+            font-size: 44px;
+        }
+
+        .hero p {
+            margin-top: 15px;
+            font-size: 18px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section {
+            padding: 80px 10%;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .section img {
+            width: 100%;
+            max-width: 450px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .text-content {
+            flex: 1;
+        }
+
+        .text-content h2 {
+            color: #1b7f4c;
+            margin-bottom: 15px;
+            font-size: 26px;
+        }
+
+        .text-content p {
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .reverse {
+            flex-direction: row-reverse;
+        }
+
+        .programs {
+            padding: 80px 10%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 35px;
+        }
+
+        .program-card {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+            transition: 0.4s;
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 45px rgba(27,127,76,0.3);
+        }
+
+        .program-card h3 {
+            color: #1b7f4c;
+            margin-bottom: 15px;
+        }
+
+        .process {
+            background: #e6f4ec;
+            padding: 80px 10%;
+            text-align: center;
+        }
+
+        .process h2 {
+            color: #1b7f4c;
+            margin-bottom: 40px;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+        }
+
+        .step {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .cta {
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .cta a {
+            display: inline-block;
+            padding: 14px 28px;
+            background: #1b7f4c;
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        .cta a:hover {
+            background: #145a32;
+            transform: translateY(-3px);
+        }
+
+        footer {
+            background: #0f5132;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        @media(max-width: 768px) {
+            .section {
+                flex-direction: column;
+                padding: 40px 20px;
+            }
+        }
+        .book-btn {
+  background-color: #2e8b57;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 15px;
+  font-size: 16px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+  background: white;
+  margin: 8% auto;
+  padding: 25px;
+  width: 40%;
+  border-radius: 10px;
+}
+
+.modal-content input,
+.modal-content select {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0 15px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.submit-btn {
+  background-color: #2e8b57;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.close {
+  float: right;
+  font-size: 22px;
+  cursor: pointer;
+}
+.school-section {
+  padding: 60px 0;
+  background-color: #f3f7f4;
+}
+
+.section-container {
+  width: 85%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.section-image img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 20px;
+}
+
+.section-content {
+  flex: 1;
+}
+
+.section-content h2 {
+  color: #1f6f4a;
+  margin-bottom: 15px;
+}
+
+.section-content ul {
+  margin-top: 15px;
+  padding-left: 20px;
+}
+
+.section-content li {
+  margin-bottom: 8px;
+}
+.book-section {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.book-section h3 {
+    color: #1b7f4c;
+    margin-bottom: 10px;
+}
+
+.book-section p {
+    margin-bottom: 20px;
+}
+
+
+
+    </style>
+</head>
+<body>
+
+<nav>
+    <h2>EcoConnect</h2>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="residential-recycling.html">Residential</a></li>
+        <li><a href="impact-goals.html">Impact</a></li>
+        <li><a href="volunteer.html">Volunteer</a></li>
+    </ul>
+</nav>
+
+<section class="hero">
+    <h1>🏢 Commercial Recycling Programs</h1>
+    <p>
+        EcoConnect partners with businesses, offices, institutions, and industries
+        to implement efficient, responsible, and sustainable waste management systems
+        that reduce environmental impact and promote corporate responsibility.
+    </p>
+</section>
+
+<section class="section">
+    <img src="images/office-recycling.png">
+    <div class="text-content">
+        <h2>📦 Office Recycling Solutions</h2>
+        <p>
+            We help corporate offices implement structured waste segregation systems,
+            providing clear guidelines and bin placement strategies for maximum efficiency.
+        </p>
+        <p>
+            Our solutions reduce operational waste, improve sustainability compliance,
+            and promote environmentally responsible workplace culture.
+        </p>
+    
+    </div>
+</section>
+<section class="school-section">
+  <div class="section-container">
+
+    <div class="section-image">
+      <img src="images/school.jpg" alt="School Recycling">
+    </div>
+
+    <div class="section-content">
+      <h2>School & College Recycling Solutions</h2>
+      <p>
+        T2T partners with schools and colleges to promote responsible waste 
+        management and sustainable campus practices. We install labeled 
+        recycling bins across campus areas and provide scheduled waste collection services.
+      </p>
+
+      <ul>
+        <li>Recycling bin installation</li>
+        <li>Scheduled waste pickup</li>
+        <li>Paper & plastic recycling</li>
+        <li>E-waste collection drives</li>
+        <li>Campus sustainability support</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+
+<div id="bookDustbin"class="book-section">
+    
+  <h3>Request Dustbin Setup</h3>
+  <p>For Offices, Schools, and Colleges</p>
+  <button class="book-btn" onclick="openForm()">Book Dustbins</button>
+</div>
+
+
+
+<section class="programs">
+    <div class="program-card">
+        <h3>♻ Waste Audit Services</h3>
+        <p>Comprehensive analysis of waste generation patterns and improvement strategies.</p>
+    </div>
+
+    <div class="program-card">
+        <h3>📊 Sustainability Planning</h3>
+        <p>Customized sustainability roadmaps aligned with business goals.</p>
+    </div>
+
+    <div class="program-card">
+        <h3>⚡ Green Certification Support</h3>
+        <p>Guidance in achieving eco-friendly certifications and compliance standards.</p>
+    </div>
+
+    <div class="program-card">
+        <h3>📦 Recycling Infrastructure Setup</h3>
+        <p>Installation of optimized bin systems and waste flow management.</p>
+    </div>
+</section>
+
+<section class="process">
+    <h2>🔄 How Our Commercial Program Works</h2>
+
+    <div class="process-steps">
+        <div class="step">
+            <h4>1️⃣ Assessment</h4>
+            <p>Evaluate current waste practices and identify improvement areas.</p>
+        </div>
+
+        <div class="step">
+            <h4>2️⃣ Strategy Planning</h4>
+            <p>Create a customized recycling and sustainability action plan.</p>
+        </div>
+
+        <div class="step">
+            <h4>3️⃣ Implementation</h4>
+            <p>Deploy recycling systems and conduct employee training.</p>
+        </div>
+
+        <div class="step">
+            <h4>4️⃣ Monitoring & Improvement</h4>
+            <p>Track progress and continuously improve sustainability efforts.</p>
+        </div>
+    </div>
+</section>
+
+
+<footer>
+    © 2026 EcoConnect | Sustainable Business Solutions
+</footer>
+
+
+<!-- Dustbin Booking Popup -->
+<div id="dustbinForm" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeForm()">&times;</span>
+    <h2>Book Office Dustbins</h2>
+
+    <form>
+     
+<form>
+
+  <label>Organization Type</label>
+  <select required>
+    <option value="">Select Type</option>
+    <option>Office</option>
+    <option>School</option>
+    <option>College</option>
+  </select>
+
+  <label>Number of Dustbins Required</label>
+  <input type="number" required>
+
+  <label>Type of Dustbin</label>
+  <select required>
+    <option value="">Select Type</option>
+    <option>Plastic Waste Bin</option>
+    <option>Paper Waste Bin</option>
+    <option>E-Waste Bin</option>
+    <option>General Waste Bin</option>
+  </select>
+
+      <button type="submit" class="submit-btn">Submit Request</button>
+    </form>
+  </div>
+</div>
+
+<script>
+function openForm() {
+  document.getElementById("dustbinForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("dustbinForm").style.display = "none";
+}
+</script>
+<script>
+// Auto open form if coming from homepage
+window.onload = function() {
+  const params = new URLSearchParams(window.location.search);
+
+  if (params.get("openForm") === "true") {
+    openForm();
+  }
+};
+</script>
+
+</body>
+</html>

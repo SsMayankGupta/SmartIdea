@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nearby Recycling Centers | EcoConnect</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">EcoConnect</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="report.html">Report Waste</a>
+    <a href="dispose.html">Dispose Smartly</a>
+  </nav>
+</header>
+
+<section class="center-section">
+  <h2>Find Nearby Recycling Centers 📍</h2>
+  <p class="center-sub">
+    Allow location access or enter your address to find the nearest recycling centers.
+  </p>
+
+  <!-- LOCATION OPTIONS -->
+  <div class="location-box">
+    <button onclick="getUserLocation()">📍 Use My Location</button>
+
+    <p>OR</p>
+
+    <input type="text" id="manualLocation" placeholder="Enter your area or address">
+    <button onclick="searchManual()">Search</button>
+  </div>
+
+  <!-- RESULTS -->
+  <div id="results" class="center-results"></div>
+
+  <!-- MAP -->
+  <iframe
+    id="map"
+    style="display:none"
+    width="100%"
+    height="350"
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</section>
+
+<footer>
+  <p>© 2026 EcoConnect. All rights reserved.</p>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>

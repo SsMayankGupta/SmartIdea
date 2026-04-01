@@ -1,0 +1,186 @@
+/* ================= QUIZ SECTION ================= */
+
+.quiz-section{
+width:100%;
+padding:90px 0;
+text-align:center;
+
+/* eco off white background */
+background:#f6fbf8;
+
+position:relative;
+overflow:hidden;
+}
+
+/* subtle eco background icons */
+
+.quiz-section::before{
+content:"♻";
+position:absolute;
+font-size:110px;
+color:#2ecc71;
+opacity:0.06;
+top:40px;
+left:10%;
+}
+
+.quiz-section::after{
+content:"🌱";
+position:absolute;
+font-size:100px;
+color:#2ecc71;
+opacity:0.06;
+bottom:50px;
+right:12%;
+}
+
+/* ================= WRAPPER ================= */
+
+.quiz-wrapper{
+max-width:750px;
+margin:auto;
+text-align:center;
+position:relative;
+z-index:2;
+}
+
+/* ================= TITLE ================= */
+
+.quiz-wrapper h2{
+font-size:34px;
+color:#0a5c36;
+margin-bottom:8px;
+font-weight:700;
+}
+
+.quiz-sub{
+color:#6c8c7b;
+margin-bottom:30px;
+font-size:15px;
+}
+
+/* ================= SCORE ================= */
+
+.score-badge{
+display:inline-block;
+background:#e8f5e9;
+color:#0a5c36;
+padding:6px 16px;
+border-radius:20px;
+font-size:13px;
+margin-bottom:10px;
+font-weight:600;
+}
+
+/* ================= PROGRESS ================= */
+
+.quiz-progress{
+color:#2ecc71;
+font-weight:600;
+margin-bottom:10px;
+}
+
+.progress-bar{
+width:100%;
+height:8px;
+background:#e5efe9;
+border-radius:10px;
+margin-bottom:25px;
+overflow:hidden;
+}
+
+.progress-fill{
+height:100%;
+width:0%;
+background:#2ecc71;
+transition:width 0.4s ease;
+}
+
+/* ================= QUESTION ================= */
+
+#questionText{
+font-size:22px;
+margin-bottom:28px;
+color:#0a5c36;
+font-weight:600;
+}
+
+/* ================= OPTIONS ================= */
+
+.options-container{
+display:flex;
+flex-direction:column;
+gap:16px;
+}
+
+.option-btn{
+padding:14px 18px;
+border-radius:8px;
+border:1px solid #dcdcdc;
+background:#ffffff;
+cursor:pointer;
+font-size:15px;
+text-align:left;
+transition:all 0.25s ease;
+}
+
+/* hover */
+
+.option-btn:hover{
+background:#e8f5e9;
+border-color:#2ecc71;
+transform:translateX(4px);
+}
+
+/* correct */
+
+.correct{
+background:#d4edda !important;
+border-color:#28a745 !important;
+}
+
+/* wrong */
+
+.wrong{
+background:#f8d7da !important;
+border-color:#dc3545 !important;
+}
+
+/* ================= FEEDBACK ================= */
+
+#feedback{
+margin-top:18px;
+font-weight:600;
+font-size:15px;
+}
+
+/* ================= BUTTONS ================= */
+
+#nextBtn,
+#restartBtn{
+margin-top:22px;
+padding:11px 26px;
+border:none;
+border-radius:25px;
+background:#2ecc71;
+color:white;
+cursor:pointer;
+font-size:14px;
+transition:0.25s;
+}
+
+#nextBtn:hover,
+#restartBtn:hover{
+background:#25b863;
+transform:translateY(-1px);
+}
+
+/* ================= CONFETTI ================= */
+
+#confettiCanvas{
+position:fixed;
+top:0;
+left:0;
+pointer-events:none;
+z-index:999;
+}

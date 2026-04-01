@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EcoConnect | Waste Management Solutions</title>
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/quiz.css">
+
+</head>
+<body>
+
+<header class="navbar">
+  <div class="nav-container">
+
+    <!-- Logo -->
+    
+<div class="logo">
+  <a href="index.html">
+    <img src="images/logo.png" alt="Trash2Treasure Logo">
+  </a>
+</div>
+
+    <!-- Navigation Links -->
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active" style="font-size: 20px;">Home</a></li>
+        <li><a href="services.html" style="font-size: 20px;">Services</a></li>
+        <li><a href="#solutions"style="font-size: 20px;">Solutions</a></li>
+        <div class="dropdown">
+  <a href="#"style="font-size: 20px;">Sustainability</a>
+
+  <div class="mega-menu">
+    <div class="mega-left">
+
+      <div class="mega-column">
+        <h4 style="font-size:25px;">Environmental Responsibility</h4>
+        <a href="clean-city.html" style="font-size: 15px;">Clean City Initiatives</a>
+        <a href="impact-goals.html"style="font-size: 15px;">Impact & Reduction Goals</a>
+        <a href="sustainability-reporting.html"style="font-size: 15px;">Sustainability Reporting</a>
+      </div>
+
+      <div class="mega-column">
+        <h4  style="font-size:25px;">Smart Recycling</h4>
+        <a href="residential-recycling.html"style="font-size: 15px;">Residential Recycling</a>
+        <a href="commercial-programs.html"style="font-size: 15px;">Commercial Programs</a>
+        <a href="recycling-education.html"style="font-size: 15px;">Recycling Education</a>
+      </div>
+
+    </div>
+
+    <div class="mega-right">
+      <img src="images/sustainability.png" alt="Sustainability">
+      <h3>Building a Greener Future</h3>
+      <p>
+        Discover how EcoConnect promotes responsible waste management,
+        recycling awareness, and sustainable living.
+      </p>
+      <a href="sustainability.html" class="mega-btn">Explore Sustainability →</a>
+    </div>
+
+  </div>
+</div>
+
+        <li><a href="report.html"style="font-size: 20px;">Report Waste</a></li>
+        <li><a href="dashboard.html"style="font-size: 20px;">Dashboard</a></li>
+        <li><a href="rewards.html"style="font-size: 20px;">Rewards</a></li>
+      </ul>
+    </nav>
+
+    <!-- Actions -->
+    <div class="nav-actions">
+      <a href="login.html" class="login"style="font-size: 20px;">Login</a>
+      <a href="signup.html" class="signup-btn"style="font-size: 20px;">Sign Up</a>
+    </div>
+
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>Trash<span>2</span>Treasure</h1>
+    <p>Smart, sustainable, and reliable waste & recycling solutions.</p>
+
+    <div class="hero-buttons">
+      <!-- Explore Services -->
+      <button class="hero-btn-primary"
+              onclick="location.href='services.html'">
+        Explore Services
+      </button>
+
+      <!-- Track Dashboard -->
+      <button class="hero-btn-secondary"
+              onclick="location.href='dashboard.html'">
+        Track My Requests & Rewards
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- GET STARTED SECTION -->
+<section class="get-started">
+  <div class="gs-container">
+    <h2>Find Waste Management Services</h2>
+
+    <div class="gs-form">
+      <input type="text" placeholder="Enter the Location">
+
+      <select id="serviceSelect">
+  <option value="">Select Service</option>
+  <option value="dustbin">Book Dustbin</option>
+  <option value="report">Report Waste</option>
+</select>
+
+      <button onclick="handleService()">Get Started</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- TOP FOUR CARDS (cdn-Content Delivery Network)-->
+<section class="quick-options">
+
+  <div class="option-card" onclick="location.href='dispose.html'">
+    <img src="https://cdn-icons-png.flaticon.com/512/679/679922.png">  
+    
+    <h3>Dispose Smartly</h3>
+    <p>Learn How to Recycle</p>
+  </div>
+
+  <div class="option-card" onclick="location.href='report.html'">
+    <img src="https://cdn-icons-png.flaticon.com/512/564/564619.png">
+    <h3>Report a Problem</h3>
+    <p>Report an Issue</p>
+  </div>
+
+  <div class="option-card" onclick="location.href='centers.html'">
+    <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png">
+    <h3>Nearby Recyclers</h3>
+    <p>Find Centers</p>
+  </div>
+
+  <div class="option-card" onclick="location.href='rewards.html'">
+    <img src="https://cdn-icons-png.flaticon.com/512/2907/2907253.png">
+    <h3>Earn Rewards</h3>
+    <p>Get Green Points</p>
+  </div>
+
+</section>
+
+
+<!-- BOTTOM TWO CARDS -->
+<section class="quick-access">
+
+  <div class="quick-box" onclick="location.href='dashboard.html'">
+    <h3>📊 Track Requests</h3>
+    <p>View status of your waste pickup requests</p>
+  </div>
+
+  <div class="quick-box" onclick="location.href='dashboard.html'">
+    <h3>🌱 Track Green Points</h3>
+    <p>Check rewards earned for eco-friendly actions</p>
+  </div>
+
+</section>
+<section id="solutions" class="wm-services"></section>
+  <h2 class="wm-title"style="font-size:80px">Our Solutions</h2>
+
+  <div class="wm-cards">
+
+    <!-- Residential -->
+    <div class="wm-card">
+      <div class="wm-img">
+        <img src="images/resi_waste.png" alt="Residential">
+      </div>
+      <h3>Residential Waste Pickup</h3>
+<p>
+  Scheduled doorstep waste collection and recycling services for households,
+  ensuring clean, hygienic, and sustainable neighborhoods.
+</p>
+
+<a href="residential-recycling.html" class="wm-link">
+  Explore Residential Waste Services
+</a>
+
+    </div>
+
+    <!-- Commercial -->
+    <div class="wm-card">
+      <div class="wm-img">
+        <img src="images/office-recycling.png" alt="Commercial">
+      </div>
+      <h3>Commercial Waste Management</h3>
+<p>
+  Scalable waste management solutions for offices, institutions,
+  apartments, and commercial establishments with responsible disposal practices.
+</p>
+<a href="commercial-programs.html" class="wm-link">
+
+
+  Get Commercial Waste Service
+</a>
+
+    </div>
+
+    <!-- Smart Reporting -->
+    <div class="wm-card">
+      <div class="wm-img">
+        <img src="https://images.unsplash.com/photo-1604187351574-c75ca79f5807" alt="Reporting">
+      </div>
+     <h3>Smart Waste Reporting</h3>
+<p>
+  Report nearby waste using images and location-based tracking
+  to request quick pickup, cleanup, and resolution.
+</p>
+
+<a href="report.html" class="wm-link">
+  Report Waste Near You
+</a>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="quiz-section">
+
+  <div class="quiz-wrapper">
+
+    <h2>♻ Smart Recycling Challenge</h2>
+    <p class="quiz-sub">Test your recycling knowledge and earn green points!</p>
+
+    <div class="quiz-card">
+
+      <div class="score-badge">
+        Green Points: <span id="scoreValue">0</span>
+      </div>
+
+      <div class="quiz-progress">
+        Question <span id="questionNumber"></span>
+      </div>
+
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+
+      <h3 id="questionText"></h3>
+
+      <div class="options-container" id="optionsContainer"></div>
+
+      <div id="feedback"></div>
+
+      <button id="nextBtn">Next Question</button>
+
+      <div id="finalResult" style="display:none;">
+        <h3 id="scoreText"></h3>
+        <button id="restartBtn">Restart Quiz</button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <canvas id="confettiCanvas"></canvas>
+
+</section>
+
+<script src="js/quiz.js"></script>
+<script src="js/quiz.js"></script>
+
+
+
+<section class="impact-section">
+  <h2>Why EcoConnect Matters</h2>
+  <p class="impact-sub">
+    EcoConnect is not just a waste management platform — it’s a step towards
+    cleaner cities, responsible citizens, and a sustainable future.
+  </p>
+
+  <div class="impact-grid">
+
+    <div class="impact-card">
+      <h3>🌍 Environmental Impact</h3>
+      <p>
+        Reduces landfill waste by promoting recycling, segregation,
+        and responsible disposal practices.
+      </p>
+    </div>
+
+    <div class="impact-card">
+      <h3>👥 Community Participation</h3>
+      <p>
+        Empowers citizens to actively report waste and contribute
+        to cleaner neighborhoods.
+      </p>
+    </div>
+
+    <div class="impact-card">
+      <h3>⚙️ Smart Technology</h3>
+      <p>
+        Uses location-based services, image uploads, and tracking
+        to ensure faster waste resolution.
+      </p>
+    </div>
+
+    <div class="impact-card">
+      <h3>🎁 Rewards & Motivation</h3>
+      <p>
+        Encourages responsible behavior by rewarding users
+        with green points for positive actions.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+
+<section class="sustainability" id="sustainability">
+  <h2>Committed to Sustainability</h2>
+  <p>Reducing environmental impact through smart recycling and waste solutions.</p>
+
+  <div class="stats">
+    <div><strong>1200+</strong><span>Tons Recycled</span></div>
+    <div><strong>45+</strong><span>Centers</span></div>
+    <div><strong>10K+</strong><span>Users</span></div>
+    <div><strong>30%</strong><span>Landfill Reduction</span></div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>Ready to Make a Difference?</h2>
+  <p>Join EcoConnect and help build a cleaner future.</p>
+  <button onclick="location.href='signup.html'">Get Started</button>
+</section>
+
+<footer>
+  <p>© 2026 EcoConnect. All rights reserved.</p>
+</footer>
+
+<script src="js/report.js"></script>
+<script src="js/quiz.js"></script>
+
+<script>
+function handleService() {
+  let service = document.getElementById("serviceSelect").value;
+ 
+  if (service === "dustbin") {
+    window.location.href = "commercial-programs.html?openForm=true";
+  } 
+  else if (service === "report") {
+    window.location.href = "report.html";
+  } 
+  else {
+    alert("Please select a service");
+  }
+}
+</script>
+</body>
+</html>

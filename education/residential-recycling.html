@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Residential Recycling | EcoConnect</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+            scroll-behavior: smooth;
+        }
+body {
+    background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)),
+                url("images/recycling-hero.png");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+
+
+        /*body {
+            background: #f4f9f6;
+            color: #333;
+        }*/
+
+        /* NAVBAR */
+        nav {
+            background: #1b7f4c;
+            padding: 15px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav h2 {
+            color: white;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                        url("images/recycling-hero.jpg");
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 120px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+        }
+
+        .hero p {
+            margin-top: 15px;
+            font-size: 18px;
+        }
+
+        /* SECTION */
+        .section {
+            padding: 80px 10%;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: 0.8s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section img {
+            width: 100%;
+            max-width: 450px;
+            border-radius: 15px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+        }
+
+        .text-content {
+            flex: 1;
+        }
+
+        .text-content h2 {
+            color: #1b7f4c;
+            margin-bottom: 15px;
+        }
+
+        .reverse {
+            flex-direction: row-reverse;
+        }
+
+        /* CHECKLIST */
+        .checklist {
+            background: #e6f4ec;
+            padding: 60px 10%;
+            text-align: center;
+        }
+
+        .checklist h2 {
+            color: #1b7f4c;
+            margin-bottom: 30px;
+        }
+
+        .checklist ul {
+            list-style: none;
+            font-size: 16px;
+        }
+
+        .checklist ul li {
+            margin: 10px 0;
+        }
+
+        /* DOWNLOAD BUTTON */
+        .download-btn {
+            margin-top: 25px;
+            display: inline-block;
+            padding: 12px 25px;
+            background: #1b7f4c;
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .download-btn:hover {
+            background: #145a32;
+            transform: translateY(-3px);
+        }
+
+        /* BACK TO TOP */
+        #topBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #1b7f4c;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+        }
+
+        footer {
+            background: #0f5132;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        @media(max-width: 768px) {
+            .section {
+                flex-direction: column;
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <h2>EcoConnect</h2>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="clean-city.html">Clean City</a></li>
+            <li><a href="impact-goals.html">Impact</a></li>
+            <li><a href="volunteer.html">Volunteer</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <h1>♻ Residential Recycling</h1>
+        <p>Empowering households for a cleaner and sustainable future.</p>
+    </section>
+
+    <!-- SECTION 1 -->
+    <section class="section">
+        <img src="images/segregation-home.png">
+        <div class="text-content">
+            <h2>🏠 Waste Segregation at Home</h2>
+            <p>Separate wet, dry, and hazardous waste to reduce environmental harm.</p>
+        </div>
+    </section>
+
+    <!-- SECTION 2 -->
+    <section class="section reverse">
+        <img src="images/recycling-bins.jpg">
+        <div class="text-content">
+            <h2>🗑 Smart Recycling Systems</h2>
+            <p>Use color-coded bins and follow proper disposal methods.</p>
+        </div>
+    </section>
+
+    <!-- SECTION 3 -->
+    <section class="section">
+        <img src="images/family-recycling.png">
+        <div class="text-content">
+            <h2>👨‍👩‍👧 Community Participation</h2>
+            <p>Encourage families and societies to participate in recycling drives.</p>
+        </div>
+    </section>
+
+    <!-- CHECKLIST -->
+    <section class="checklist">
+        <h2>✅ Quick Recycling Tips</h2>
+        <ul>
+            <li>✔ Rinse plastic containers before recycling</li>
+            <li>✔ Avoid mixing food waste with dry waste</li>
+            <li>✔ Use reusable bags</li>
+            <li>✔ Reduce single-use plastics</li>
+        </ul>
+
+       
+    </section>
+
+    <footer>
+        © 2026 EcoConnect | Promoting Sustainable Living
+    </footer>
+
+    <!-- BACK TO TOP -->
+    <div id="topBtn" onclick="scrollToTop()">↑</div>
+
+    <script>
+        const sections = document.querySelectorAll('.section');
+
+        window.addEventListener('scroll', () => {
+            sections.forEach(sec => {
+                const position = sec.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                if(position < screenPosition) {
+                    sec.classList.add('visible');
+                }
+            });
+
+            if(window.scrollY > 300) {
+                document.getElementById("topBtn").style.display = "block";
+            } else {
+                document.getElementById("topBtn").style.display = "none";
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+    </script>
+
+</body>
+</html>
