@@ -2,33 +2,204 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Waste Collection Request</title>
-  <link rel="stylesheet" href="css/style.css">
+  <title>Waste Collection Request | EcoConnect</title>
+
+  <!-- Google Fonts - Montserrat & Cinzel -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0b5d3b 0%, #1a8c5e 50%, #2ecc71 100%);
+    }
+
+    /* HEADER */
+    header {
+      background: rgba(11, 93, 59, 0.3);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 15px 30px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Cinzel', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: #ffffff;
+      text-decoration: none;
+      letter-spacing: 2px;
+    }
+
+    /* USER PROFILE */
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      color: #ffffff;
+    }
+
+    .logout-btn {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #ffffff;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    /* MAIN CONTENT */
+    .waste-section {
+      max-width: 500px;
+      margin: 60px auto;
+      padding: 0 30px;
+    }
+
+    .waste-section h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #ffffff;
+      text-align: center;
+      letter-spacing: 2px;
+      margin-bottom: 30px;
+    }
+
+    .glass-form {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 24px;
+      padding: 40px;
+    }
+
+    .glass-form label {
+      display: block;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 14px;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .glass-form input,
+    .glass-form select {
+      width: 100%;
+      padding: 14px 18px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
+      font-size: 14px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .glass-form input::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .glass-form input:focus,
+    .glass-form select:focus {
+      outline: none;
+      border-color: rgba(255, 255, 255, 0.6);
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .glass-form button {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, #0b5d3b, #1a8c5e);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .glass-form button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 13px;
+    }
+  </style>
 </head>
 <body>
 
-<section class="waste-section">
-  <h2>Request Waste Pickup</h2>
-
-  <div class="waste-card">
-    <form>
-      <label>Waste Type</label>
-      <select>
-        <option>Dry Waste</option>
-        <option>Wet Waste</option>
-        <option>E-Waste</option>
-      </select>
-
-      <label>Pickup Location</label>
-      <input type="text" placeholder="Enter your area">
-
-      <label>Pickup Date</label>
-      <input type="date">
-
-      <button type="submit">Submit Request</button>
-    </form>
+<header>
+  <div class="header-container">
+    <a href="../index.html" class="logo">EcoConnect</a>
+    <div class="user-profile">
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
   </div>
+</header>
+
+<section class="waste-section">
+  <h1>WASTE PICKUP</h1>
+
+  <form class="glass-form">
+    <label>Waste Type</label>
+    <select>
+      <option>Dry Waste</option>
+      <option>Wet Waste</option>
+      <option>E-Waste</option>
+    </select>
+
+    <label>Pickup Location</label>
+    <input type="text" placeholder="Enter your area or address">
+
+    <label>Pickup Date</label>
+    <input type="date">
+
+    <button type="submit">Submit Request</button>
+  </form>
 </section>
+
+<footer>
+  <p>&copy; 2026 EcoConnect. All rights reserved.</p>
+</footer>
+
+<script>
+  function logout() {
+    if (confirm('Are you sure you want to logout?')) {
+      localStorage.removeItem('user');
+      window.location.href = '../auth/login.html';
+    }
+  }
+</script>
 
 </body>
 </html>

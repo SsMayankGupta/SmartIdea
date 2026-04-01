@@ -4,144 +4,304 @@
     <meta charset="UTF-8">
     <title>Clean City Initiatives | EcoConnect</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/clean-city.css">
+
+    <!-- Google Fonts - Montserrat & Cinzel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0b5d3b 0%, #1a8c5e 50%, #2ecc71 100%);
+        }
+
+        /* HEADER */
+        header {
+            background: rgba(11, 93, 59, 0.3);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 15px 30px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #ffffff;
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        /* NAVIGATION */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        /* USER PROFILE */
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #ffffff;
+        }
+
+        .user-info {
+            text-align: right;
+        }
+
+        .user-name {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .user-email {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .user-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #7dffb3, #2ecc71);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 700;
+            color: #0b5d3b;
+            cursor: pointer;
+        }
+
+        .logout-btn {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        /* HERO */
+        .hero {
+            text-align: center;
+            padding: 80px 30px 40px;
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+        }
+
+        /* CARDS */
+        .cards {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .card h2 {
+            color: #7dffb3;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 20px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .card ul li {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 13px;
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .card ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #7dffb3;
+            font-weight: bold;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 13px;
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- HERO SECTION -->
+<header>
+    <div class="header-container">
+        <a href="../index.html" class="logo">EcoConnect</a>
+        
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../pages/dashboard.html">Dashboard</a></li>
+            <li><a href="../pages/report.html">Report</a></li>
+        </ul>
+
+        <div class="user-profile">
+            <div class="user-info">
+                <div class="user-name" id="userName">John Doe</div>
+                <div class="user-email" id="userEmail">john@example.com</div>
+            </div>
+            <div class="user-avatar" id="userAvatar">JD</div>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+    </div>
+</header>
+
 <section class="hero">
-    <h1>🌱 Clean City Initiatives</h1>
+    <h1>CLEAN CITY INITIATIVES</h1>
     <p>Working Together for a Cleaner, Greener Tomorrow</p>
 </section>
 
-<!-- INTRO -->
-<section class="intro">
-    <h2 class="clean-quote" style="color: darkgreen;">
-  “Together, we are building cleaner cities, greener neighborhoods, and a healthier future through responsible waste management.”
-</h2>
-
-</section>
-
-<!-- INITIATIVES -->
 <section class="cards">
-
     <div class="card">
-        <div class="card-content">
-            <h2 style="color: darkgreen;">🧹Clean-Up Drives</h2>
-            <p>Regular campaigns in parks, streets, and public areas to remove waste and promote cleanliness.</p>
-            <ul>
-                <li>Monthly clean-up programs</li>
-                <li>School & college drives</li>
-                <li>Corporate volunteer partnerships</li>
-                <li>Plastic waste campaigns</li>
-            </ul>
-        </div>
+        <h2>🧹 Clean-Up Drives</h2>
+        <p>Regular campaigns in parks, streets, and public areas to remove waste and promote cleanliness.</p>
+        <ul>
+            <li>Monthly clean-up programs</li>
+            <li>School & college drives</li>
+            <li>Corporate volunteer partnerships</li>
+            <li>Plastic waste campaigns</li>
+        </ul>
     </div>
 
     <div class="card">
-        <div class="card-content">
-            <h2 style="color: darkgreen;">♻ Smart Waste Segregation</h2>
-            <p>Encouraging households and businesses to separate dry, wet, and hazardous waste.</p>
-            <ul>
-                <li>Awareness workshops</li>
-                <li>Color-coded dustbins</li>
-                <li>Door-to-door education</li>
-                <li>Recycling center support</li>
-            </ul>
-        </div>
+        <h2>♻ Smart Waste Segregation</h2>
+        <p>Encouraging households and businesses to separate dry, wet, and hazardous waste.</p>
+        <ul>
+            <li>Awareness workshops</li>
+            <li>Color-coded dustbins</li>
+            <li>Door-to-door education</li>
+            <li>Recycling center support</li>
+        </ul>
     </div>
 
     <div class="card">
-        <div class="card-content">
-            <h2 style="color: darkgreen;">🌳 Urban Green Development</h2>
-            <p>Improving air quality and city beauty through green initiatives.</p>
-            <ul>
-                <li>Tree plantation drives</li>
-                <li>Roadside greenery</li>
-                <li>Park restoration</li>
-                <li>Community gardening</li>
-            </ul>
-        </div>
+        <h2>🌳 Urban Green Development</h2>
+        <p>Improving air quality and city beauty through green initiatives.</p>
+        <ul>
+            <li>Tree plantation drives</li>
+            <li>Roadside greenery</li>
+            <li>Park restoration</li>
+            <li>Community gardening</li>
+        </ul>
     </div>
 
     <div class="card">
-        <div class="card-content">
-            <h2 style="color: darkgreen;">🏫 Environmental Awareness</h2>
-            <p>Workshops and campaigns in schools and communities to build responsibility.</p>
-            <ul>
-                <li>Recycling sessions</li>
-                <li>Sustainability seminars</li>
-                <li>Pledge campaigns</li>
-                <li>Digital challenges</li>
-            </ul>
-        </div>
-    </div>
-
-</section>
-
-<!-- IMPACT -->
-<section class="impact">
-    <h2>🌍 Our Commitment to a Cleaner Future</h2>
-
-    <div class="impact-grid">
-
-        <div class="impact-card">
-            <div class="overlay"></div>
-            <img src="images/greenery.png" alt="Urban Greenery">
-            <div class="impact-content">
-                <h3>🌿 Expanding Urban Greenery</h3>
-                <p>Creating healthier and greener city environments through plantation and restoration drives.</p>
-            </div>
-        </div>
-
-        <div class="impact-card">
-            <div class="overlay"></div>
-            <img src="images/recycling.png" alt="Recycling">
-            <div class="impact-content">
-                <h3>♻ Promoting Responsible Recycling</h3>
-                <p>Encouraging waste segregation and sustainable disposal practices at the community level.</p>
-            </div>
-        </div>
-
-        <div class="impact-card">
-            <div class="overlay"></div>
-            <img src="images/community.png" alt="Community Action">
-            <div class="impact-content">
-                <h3>🧹 Encouraging Community Action</h3>
-                <p>Bringing people together to actively participate in clean-up and awareness programs.</p>
-            </div>
-        </div>
-
-        <div class="impact-card">
-            <div class="overlay"></div>
-            <img src="images/awareness.png" alt="Environmental Awareness">
-            <div class="impact-content">
-                <h3>📚 Spreading Environmental Awareness</h3>
-                <p>Educating citizens and students about sustainability and responsible living.</p>
-            </div>
-        </div>
-
+        <h2>🏫 Environmental Awareness</h2>
+        <p>Workshops and campaigns in schools and communities to build responsibility.</p>
+        <ul>
+            <li>Recycling sessions</li>
+            <li>Sustainability seminars</li>
+            <li>Pledge campaigns</li>
+            <li>Digital challenges</li>
+        </ul>
     </div>
 </section>
-
-
-<!-- CTA -->
-<section class="cta">
-    <h2>🤝 Get Involved</h2>
-    <p>Be part of the change and help us build a sustainable future.</p>
-
-    <div class="buttons">
-        <a href="volunteer.html" class="btn">Volunteer Now</a>
-        <a href="report.html" class="btn">Report Waste</a>
-        <a href="clean-city.html" class="btn">Learn More</a>
-    </div>
-</section>
-
 
 <footer>
-    © 2026 EcoConnect | Building a Sustainable Future
+    <p>&copy; 2026 EcoConnect | Building a Sustainable Future</p>
 </footer>
+
+<script>
+    function logout() {
+        if (confirm('Are you sure you want to logout?')) {
+            localStorage.removeItem('user');
+            window.location.href = '../auth/login.html';
+        }
+    }
+
+    function loadUserData() {
+        const user = JSON.parse(localStorage.getItem('user')) || { name: 'John Doe', email: 'john@example.com' };
+        document.getElementById('userName').textContent = user.name;
+        document.getElementById('userEmail').textContent = user.email;
+        const initials = user.name.split(' ').map(n => n[0]).join('').toUpperCase();
+        document.getElementById('userAvatar').textContent = initials;
+    }
+
+    document.addEventListener('DOMContentLoaded', loadUserData);
+</script>
 
 </body>
 </html>

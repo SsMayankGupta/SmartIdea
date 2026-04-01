@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Report Waste | EcoConnect</title>
+
+<!-- Google Fonts - Montserrat & Cinzel -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* {
+font-family: 'Montserrat', sans-serif;
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+min-height: 100vh;
+background: linear-gradient(135deg, #0b5d3b 0%, #1a8c5e 50%, #2ecc71 100%);
+}
+
+/* HEADER */
+header {
+background: rgba(11, 93, 59, 0.3);
+backdrop-filter: blur(10px);
+border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+padding: 15px 30px;
+position: sticky;
+top: 0;
+z-index: 1000;
+}
+
+.header-container {
+max-width: 1200px;
+margin: 0 auto;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.logo {
+font-family: 'Cinzel', serif;
+font-size: 24px;
+font-weight: 700;
+color: #ffffff;
+text-decoration: none;
+letter-spacing: 2px;
+}
+
+/* NAVIGATION */
+.nav-links {
+display: flex;
+list-style: none;
+gap: 30px;
+}
+
+.nav-links a {
+color: rgba(255, 255, 255, 0.9);
+text-decoration: none;
+font-weight: 500;
+font-size: 14px;
+transition: all 0.3s ease;
+position: relative;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+color: #ffffff;
+}
+
+.nav-links a::after {
+content: '';
+position: absolute;
+bottom: -4px;
+left: 0;
+width: 0;
+height: 2px;
+background: #7dffb3;
+transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+width: 100%;
+}
+
+/* USER PROFILE */
+.user-profile {
+display: flex;
+align-items: center;
+gap: 15px;
+color: #ffffff;
+}
+
+.user-info {
+text-align: right;
+}
+
+.user-name {
+font-weight: 600;
+font-size: 14px;
+}
+
+.user-email {
+font-size: 12px;
+color: rgba(255, 255, 255, 0.7);
+}
+
+.user-avatar {
+width: 42px;
+height: 42px;
+border-radius: 50%;
+background: linear-gradient(135deg, #7dffb3, #2ecc71);
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 18px;
+font-weight: 700;
+color: #0b5d3b;
+cursor: pointer;
+}
+
+.logout-btn {
+background: rgba(255, 255, 255, 0.15);
+border: 1px solid rgba(255, 255, 255, 0.3);
+color: #ffffff;
+padding: 8px 16px;
+border-radius: 8px;
+font-size: 13px;
+font-weight: 600;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+background: rgba(255, 255, 255, 0.25);
+}
+
+/* MOBILE MENU */
+.mobile-menu-btn {
+display: none;
+background: none;
+border: none;
+color: #ffffff;
+font-size: 24px;
+cursor: pointer;
+}
+
+/* MAIN CONTENT */
+.report-section {
+max-width: 900px;
+margin: 40px auto;
+padding: 0 30px;
+}
+
+.report-section h1 {
+font-family: 'Cinzel', serif;
+font-size: 2.5rem;
+font-weight: 700;
+color: #ffffff;
+text-align: center;
+letter-spacing: 2px;
+margin-bottom: 10px;
+}
+
+.report-sub {
+color: rgba(255, 255, 255, 0.8);
+text-align: center;
+margin-bottom: 40px;
+}
+
+/* GLASS FORM */
+.glass-form {
+background: rgba(255, 255, 255, 0.1);
+backdrop-filter: blur(10px);
+border: 1px solid rgba(255, 255, 255, 0.2);
+border-radius: 24px;
+padding: 40px;
+}
+
+.form-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 20px;
+margin-bottom: 20px;
+}
+
+.glass-form input,
+.glass-form select,
+.glass-form textarea {
+width: 100%;
+padding: 14px 18px;
+border: 2px solid rgba(255, 255, 255, 0.3);
+border-radius: 12px;
+font-size: 14px;
+background: rgba(255, 255, 255, 0.1);
+color: #ffffff;
+transition: all 0.3s ease;
+}
+
+.glass-form input::placeholder,
+.glass-form textarea::placeholder {
+color: rgba(255, 255, 255, 0.5);
+}
+
+.glass-form input:focus,
+.glass-form select:focus,
+.glass-form textarea:focus {
+outline: none;
+border-color: rgba(255, 255, 255, 0.6);
+background: rgba(255, 255, 255, 0.15);
+}
+
+.glass-form textarea {
+min-height: 120px;
+resize: vertical;
+}
+
+.glass-form button {
+width: 100%;
+padding: 16px;
+background: linear-gradient(135deg, #0b5d3b, #1a8c5e);
+color: white;
+border: none;
+border-radius: 12px;
+font-size: 16px;
+font-weight: 600;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.glass-form button:hover {
+transform: translateY(-2px);
+box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* INSTRUCTIONS */
+.instructions {
+background: rgba(255, 255, 255, 0.05);
+border-radius: 16px;
+padding: 25px;
+margin-bottom: 30px;
+}
+
+.instructions h3 {
+color: #7dffb3;
+font-size: 18px;
+margin-bottom: 15px;
+}
+
+.instructions ul {
+list-style: none;
+padding: 0;
+}
+
+.instructions li {
+color: rgba(255, 255, 255, 0.8);
+font-size: 14px;
+margin-bottom: 10px;
+padding-left: 25px;
+position: relative;
+}
+
+.instructions li::before {
+content: '✓';
+position: absolute;
+left: 0;
+color: #7dffb3;
+font-weight: bold;
+}
+
+/* FOOTER */
+footer {
+text-align: center;
+padding: 30px;
+color: rgba(255, 255, 255, 0.6);
+font-size: 13px;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+header {
+padding: 15px 20px;
+}
+
+.mobile-menu-btn {
+display: block;
+}
+
+.nav-links {
+display: none;
+position: absolute;
+top: 100%;
+left: 0;
+right: 0;
+background: rgba(11, 93, 59, 0.95);
+backdrop-filter: blur(10px);
+flex-direction: column;
+padding: 20px;
+gap: 15px;
+border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.nav-links.active {
+display: flex;
+}
+
+.user-info {
+display: none;
+}
+
+.report-section {
+margin: 25px 20px;
+padding: 0;
+}
+
+.report-section h1 {
+font-size: 1.8rem;
+}
+
+.glass-form {
+padding: 25px 20px;
+}
+
+.form-grid {
+grid-template-columns: 1fr;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header-container">
+<a href="../index.html" class="logo">EcoConnect</a>
+
+<ul class="nav-links" id="navLinks">
+<li><a href="../index.html">Home</a></li>
+<li><a href="report.html" class="active">Report</a></li>
+<li><a href="dispose.html">Dispose</a></li>
+<li><a href="centers.html">Centers</a></li>
+</ul>
+
+<div class="user-profile">
+<div class="user-info">
+<div class="user-name" id="userName">John Doe</div>
+<div class="user-email" id="userEmail">john@example.com</div>
+</div>
+<div class="user-avatar" id="userAvatar">JD</div>
+<button class="logout-btn" onclick="logout()">Logout</button>
+</div>
+
+<button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+</div>
+</header>
+
+<section class="report-section">
+<h1>REPORT WASTE</h1>
+<p class="report-sub">
+Help us identify garbage issues quickly and contribute to cleaner streets
+</p>
+
+<div class="instructions">
+<h3>📋 Instructions</h3>
+<ul>
+<li>Upload a clear photo of the waste</li>
+<li>Provide correct address details</li>
+<li>Select the correct waste category</li>
+<li>Avoid duplicate reports</li>
+<li>Help maintain a clean and green city</li>
+</ul>
+</div>
+
+<form class="glass-form">
+<div class="form-grid">
+<input type="text" placeholder="Enter your full name" required>
+<input type="email" placeholder="Enter your email address" required>
+<input type="tel" placeholder="Enter your mobile number" required>
+<select required>
+<option value="">Select waste type</option>
+<option>Plastic Waste</option>
+<option>Organic Waste</option>
+<option>E-Waste</option>
+<option>General Waste</option>
+</select>
+<input type="text" placeholder="Enter your address" required>
+<input type="text" placeholder="Enter your city" required>
+<input type="text" placeholder="Enter pincode" required>
+<input type="file" accept="image/*">
+</div>
+<textarea placeholder="Describe the issue in detail..."></textarea>
+<button type="submit">Submit Report</button>
+</form>
+</section>
+
+<footer>
+<p>&copy; 2026 EcoConnect. All rights reserved.</p>
+</footer>
+
+<script>
+function toggleMenu() {
+const navLinks = document.getElementById('navLinks');
+navLinks.classList.toggle('active');
+}
+
+function logout() {
+if (confirm('Are you sure you want to logout?')) {
+localStorage.removeItem('user');
+window.location.href = '../auth/login.html';
+}
+}
+
+function loadUserData() {
+const user = JSON.parse(localStorage.getItem('user')) || { name: 'John Doe', email: 'john@example.com' };
+document.getElementById('userName').textContent = user.name;
+document.getElementById('userEmail').textContent = user.email;
+const initials = user.name.split(' ').map(n => n[0]).join('').toUpperCase();
+document.getElementById('userAvatar').textContent = initials;
+}
+
+document.addEventListener('click', function(e) {
+const navLinks = document.getElementById('navLinks');
+const menuBtn = document.querySelector('.mobile-menu-btn');
+if (!navLinks.contains(e.target) && !menuBtn.contains(e.target)) {
+navLinks.classList.remove('active');
+}
+});
+
+document.addEventListener('DOMContentLoaded', loadUserData);
+</script>
+
+</body>
+</html>

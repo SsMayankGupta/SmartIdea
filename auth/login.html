@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login | EcoConnect</title>
+
+  <!-- Google Fonts - Montserrat & Cinzel -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      font-family: 'Montserrat', sans-serif;
+    }
+    .auth-bg {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0b5d3b 0%, #1a8c5e 50%, #2ecc71 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .auth-card {
+      background: rgba(11, 93, 59, 0.25);
+      backdrop-filter: blur(10px);
+      border-radius: 24px;
+      padding: 48px;
+      width: 100%;
+      max-width: 480px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .auth-card h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #ffffff;
+      text-align: center;
+      margin-bottom: 8px;
+      letter-spacing: 2px;
+    }
+    .auth-card .subtitle {
+      text-align: center;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1rem;
+      margin-bottom: 32px;
+      font-weight: 500;
+    }
+    .input-box {
+      position: relative;
+      margin-bottom: 20px;
+    }
+    .input-box input {
+      width: 100%;
+      padding: 16px 48px 16px 20px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+    }
+    .input-box input::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+    .input-box input:focus {
+      outline: none;
+      border-color: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+    }
+    .input-box span {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.25rem;
+      opacity: 0.7;
+      color: rgba(255, 255, 255, 0.8);
+    }
+    .options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      margin-bottom: 24px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+    .remember {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+    .remember input[type="checkbox"] {
+      accent-color: #0b5d3b;
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+    .options a {
+      color: #7dffb3;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    .options a:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+    .auth-btn {
+      width: 100%;
+      padding: 18px;
+      background: linear-gradient(135deg, #0b5d3b 0%, #1a8c5e 100%);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .auth-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(11, 93, 59, 0.4);
+    }
+    .switch {
+      text-align: center;
+      margin-top: 24px;
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 500;
+    }
+    .switch a {
+      color: #7dffb3;
+      font-weight: 700;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .switch a:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="auth-bg">
+  <form class="auth-card" onsubmit="login(); return false;">
+    <h2>LOGIN</h2>
+    <p class="subtitle">Welcome back to EcoConnect</p>
+
+    <div class="input-box">
+      <input type="email" id="email" placeholder="Enter your email address" required>
+      <span>📧</span>
+    </div>
+
+    <div class="input-box">
+      <input type="password" id="password" placeholder="Enter your password" required>
+      <span>🔒</span>
+    </div>
+
+    <div class="options">
+      <label class="remember">
+        <input type="checkbox">
+        Remember me
+      </label>
+      <a href="#">Forgot password?</a>
+    </div>
+
+    <button type="submit" class="auth-btn">LOGIN</button>
+
+    <p class="switch">
+      Don't have an account?
+      <a href="signup.html">Sign Up</a>
+    </p>
+  </form>
+</div>
+
+<script src="../js/script.js"></script>
+</body>
+</html>
