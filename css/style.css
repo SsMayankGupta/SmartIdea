@@ -241,7 +241,7 @@ h2 {
 }
 
 .card {
-  background: white;
+  background: #2ecc71;
   padding: 30px;
   text-align: center;
   border-radius: 10px;
@@ -926,7 +926,7 @@ footer {
 
 .wm-services {
  padding: 80px 60px ;
-  background: #f7f9f6;
+  background: #2ecc71;
 }
 
 .wm-title {
@@ -1267,7 +1267,7 @@ html {
 /* SERVICES SECTION */
 .services-section {
   padding: 70px 60px;
-  background: #f4fdf7;
+  background: #2ecc71;
   text-align: center;
 }
 

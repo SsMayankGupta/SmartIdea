@@ -4,14 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services | EcoConnect</title>
-
-    <!-- Google Fonts - Montserrat & Cinzel -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="../css/style.css">
-
     <style>
         * {
             font-family: 'Montserrat', sans-serif;
@@ -53,7 +49,6 @@
             letter-spacing: 2px;
         }
 
-        /* NAVIGATION */
         .nav-links {
             display: flex;
             list-style: none;
@@ -90,7 +85,6 @@
             width: 100%;
         }
 
-        /* USER PROFILE */
         .user-profile {
             display: flex;
             align-items: center;
@@ -142,7 +136,6 @@
             background: rgba(255, 255, 255, 0.25);
         }
 
-        /* MOBILE MENU */
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -175,14 +168,15 @@
             margin-bottom: 40px;
         }
 
-        /* SERVICES GRID */
+        /* SERVICE CARDS */
         .services-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
+            margin-bottom: 50px;
         }
 
-        .service-card, .wm-card {
+        .service-card {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -193,7 +187,7 @@
             transition: all 0.3s ease;
         }
 
-        .service-card:hover, .wm-card:hover {
+        .service-card:hover {
             transform: translateY(-8px);
             background: rgba(255, 255, 255, 0.15);
         }
@@ -203,13 +197,13 @@
             margin-bottom: 20px;
         }
 
-        .service-card h3, .wm-card h3 {
+        .service-card h3 {
             color: #ffffff;
             font-size: 20px;
             margin-bottom: 12px;
         }
 
-        .service-card p, .wm-card p {
+        .service-card p {
             color: rgba(255, 255, 255, 0.8);
             font-size: 14px;
             line-height: 1.6;
@@ -222,10 +216,226 @@
             text-decoration: none;
             font-weight: 600;
             font-size: 14px;
+            transition: all 0.3s ease;
         }
 
-        .wm-link:hover {
-            text-decoration: underline;
+        /* SERVICE CARDS - TRANSPARENT */
+        .service-card {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 35px 25px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .glass-card {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+
+        .glass-card h2 {
+            font-family: 'Cinzel', serif;
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 1.8rem;
+        }
+
+        .glass-card > p {
+            color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* FORM GRID LAYOUT */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            color: #ffffff;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .form-group label .required {
+            color: #ff6b6b;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 14px 18px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            font-size: 14px;
+            background: transparent;
+            color: #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: rgba(125, 255, 179, 0.8);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .form-group select option {
+            background: #0b5d3b;
+            color: #ffffff;
+        }
+
+        .form-group select:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .submit-btn {
+            grid-column: 1 / -1;
+            padding: 16px 40px;
+            background: linear-gradient(135deg, #0b5d3b, #1a8c5e);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .refresh-btn {
+            background: linear-gradient(135deg, #0b5d3b, #1a8c5e);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .refresh-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* MESSAGE BOX - TRANSPARENT */
+        .message-box {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            display: none;
+            border: 1px solid;
+            background: transparent;
+        }
+
+        .message-box.success {
+            color: #7dffb3;
+            border-color: rgba(125, 255, 179, 0.5);
+        }
+
+        .message-box.error {
+            color: #ffcccc;
+            border-color: rgba(255, 100, 100, 0.5);
+        }
+
+        /* REQUESTS TABLE - TRANSPARENT */
+        .requests-container {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        .requests-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: transparent;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .requests-table th {
+            background: rgba(11, 93, 59, 0.5);
+            padding: 15px;
+            text-align: left;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .requests-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            font-size: 14px;
+        }
+
+        .requests-table tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .request-id {
+            color: #7dffb3;
+            font-weight: 600;
+        }
+
+        .status-badge {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .cancel-btn {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cancel-btn:hover {
+            background: #ff5252;
         }
 
         /* FOOTER */
@@ -280,6 +490,23 @@
             .services-container {
                 grid-template-columns: 1fr;
             }
+
+            .glass-card {
+                padding: 25px 20px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .requests-table {
+                font-size: 12px;
+            }
+
+            .requests-table th,
+            .requests-table td {
+                padding: 10px;
+            }
         }
     </style>
 </head>
@@ -288,15 +515,14 @@
 <header>
     <div class="header-container">
         <a href="../index.html" class="logo">EcoConnect</a>
-        
         <ul class="nav-links" id="navLinks">
             <li><a href="../index.html">Home</a></li>
+            <li><a href="../pages/report.html">Report Waste</a></li>
+            <li><a href="../pages/dispose.html">Dispose</a></li>
+            <li><a href="../pages/centers.html">Centers</a></li>
             <li><a href="services.html" class="active">Services</a></li>
-            <li><a href="../pages/report.html">Report</a></li>
-            <li><a href="../pages/dashboard.html">Dashboard</a></li>
-            <li><a href="../pages/rewards.html">Rewards</a></li>
+            <li><a href="#" onclick="event.preventDefault(); document.getElementById('requestsContainer').scrollIntoView({behavior: 'smooth'}); loadMyRequests();">My Requests</a></li>
         </ul>
-
         <div class="user-profile">
             <div class="user-info">
                 <div class="user-name" id="userName">John Doe</div>
@@ -305,85 +531,325 @@
             <div class="user-avatar" id="userAvatar">JD</div>
             <button class="logout-btn" onclick="logout()">Logout</button>
         </div>
-
         <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
     </div>
 </header>
 
 <section class="services-section" id="services">
     <h1>OUR SERVICES</h1>
-    <p class="services-subtitle">
-        Smart and sustainable waste management solutions
-    </p>
-
+    <p class="services-subtitle">Smart and sustainable waste management solutions</p>
+    
     <div class="services-container">
-        <div class="service-card" onclick="location.href='Waste_Collection.html'">
-            <div class="service-icon">🚛</div>
-            <h3>Waste Collection</h3>
-            <p>Door-to-door scheduled and on-demand waste pickup services.</p>
-        </div>
+        <div class="service-card" onclick="location.href='Waste_Collection.html'"><div class="service-icon">🚛</div><h3>Waste Collection</h3><p>Door-to-door scheduled and on-demand waste pickup services.</p></div>
+        <div class="service-card" onclick="location.href='recycling_services.html'"><div class="service-icon">♻️</div><h3>Recycling Services</h3><p>Eco-friendly recycling for plastic, paper, metal, and glass.</p></div>
+        <div class="service-card wm-card"><div class="service-icon">🗑️</div><h3>Dustbin Ordering</h3><p>Request waste bins for schools, colleges, and businesses.</p><a href="../education/commercial-programs.html#bookDustbin" class="wm-link">Order Waste Bins →</a></div>
+        <div class="service-card" onclick="location.href='../pages/report.html'"><div class="service-icon">📝</div><h3>Complaints & Requests</h3><p>Report issues, track service status, and get quick resolutions.</p></div>
+        <div class="service-card" onclick="location.href='../pages/rewards.html'"><div class="service-icon">🎁</div><h3>Rewards Program</h3><p>Earn green points for recycling and redeem exciting rewards.</p></div>
+    </div>
+
+    <div class="glass-card">
+        <h2>Request a Service</h2>
+        <p>Submit your service request and earn 10 Green Points</p>
         
-        <div class="service-card" onclick="location.href='recycling_services.html'">
-            <div class="service-icon">♻️</div>
-            <h3>Recycling Services</h3>
-            <p>Eco-friendly recycling for plastic, paper, metal, and glass.</p>
-        </div>
+        <form id="serviceRequestForm">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Select City <span class="required">*</span></label>
+                    <select id="citySelect" required>
+                        <option value="">-- Choose a City --</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Select Center <span class="required">*</span></label>
+                    <select id="centerSelect" required disabled>
+                        <option value="">-- First select a city --</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Service Type <span class="required">*</span></label>
+                    <select id="serviceType" required>
+                        <option value="">-- Select Service Type --</option>
+                        <option value="Household Waste Pickup">Household Waste Pickup</option>
+                        <option value="Industrial Waste Disposal">Industrial Waste Disposal</option>
+                        <option value="Recycling Services">Recycling Services</option>
+                        <option value="Hazardous Waste Handling">Hazardous Waste Handling</option>
+                        <option value="Bulk Pickup">Bulk Pickup</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Contact Name <span class="required">*</span></label>
+                    <input type="text" id="contactName" required placeholder="e.g. John Doe">
+                </div>
+                <div class="form-group">
+                    <label>Contact Email <span class="required">*</span></label>
+                    <input type="email" id="contactEmail" required placeholder="e.g. john@example.com">
+                </div>
+                <div class="form-group">
+                    <label>Contact Phone</label>
+                    <input type="tel" id="contactPhone" placeholder="e.g. +91 98765 43210">
+                </div>
+                <div class="form-group full-width">
+                    <label>Complete Address <span class="required">*</span></label>
+                    <textarea id="address" rows="3" required placeholder="Enter your full address including landmark, street, building name..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Pincode</label>
+                    <input type="text" id="pincode" placeholder="e.g. 110001">
+                </div>
+                <div class="form-group">
+                    <label>Preferred Date</label>
+                    <input type="date" id="preferredDate">
+                </div>
+                <div class="form-group">
+                    <label>Preferred Time</label>
+                    <select id="preferredTime">
+                        <option value="">-- Select Time Slot --</option>
+                        <option value="Morning (9AM - 12PM)">Morning (9AM - 12PM)</option>
+                        <option value="Afternoon (12PM - 3PM)">Afternoon (12PM - 3PM)</option>
+                        <option value="Evening (3PM - 6PM)">Evening (3PM - 6PM)</option>
+                    </select>
+                </div>
+                <div class="form-group full-width">
+                    <label>Special Instructions</label>
+                    <textarea id="specialInstructions" rows="2" placeholder="Any specific requirements, gate codes, floor number, etc."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Request (+10 Points)</button>
+            </div>
+        </form>
+        <div id="formMessage" class="message-box"></div>
+    </div>
 
-        <div class="service-card wm-card">
-            <div class="service-icon">🗑️</div>
-            <h3>Dustbin Ordering</h3>
-            <p>Request waste bins for schools, colleges, and businesses.</p>
-            <a href="../education/commercial-programs.html#bookDustbin" class="wm-link">Order Waste Bins →</a>
+    <div class="glass-card">
+        <h2>My Service Requests</h2>
+        <p>View and manage your service requests</p>
+        <div style="text-align: center; margin-bottom: 20px;">
+            <button class="refresh-btn" onclick="loadMyRequests()">🔄 Refresh Requests</button>
         </div>
-
-        <div class="service-card" onclick="location.href='../pages/report.html'">
-            <div class="service-icon">📝</div>
-            <h3>Complaints & Requests</h3>
-            <p>Report issues, track service status, and get quick resolutions.</p>
-        </div>
-
-        <div class="service-card" onclick="location.href='../pages/rewards.html'">
-            <div class="service-icon">🎁</div>
-            <h3>Rewards Program</h3>
-            <p>Earn green points for recycling and redeem exciting rewards.</p>
+        <div id="requestsContainer" class="requests-container">
+            <p style="text-align: center; color: rgba(255, 255, 255, 0.7);">Click "Refresh Requests" to load your service requests</p>
         </div>
     </div>
 </section>
 
-<footer>
-    <p>&copy; 2026 EcoConnect. All rights reserved.</p>
-</footer>
+<footer><p>&copy; 2026 EcoConnect. All rights reserved.</p></footer>
 
 <script>
-    function toggleMenu() {
-        const navLinks = document.getElementById('navLinks');
-        navLinks.classList.toggle('active');
-    }
+function toggleMenu() {
+    const navLinks = document.getElementById('navLinks');
+    navLinks.classList.toggle('active');
+}
 
-    function logout() {
-        if (confirm('Are you sure you want to logout?')) {
-            localStorage.removeItem('user');
-            window.location.href = '../auth/login.html';
+function logout() {
+    if (confirm('Are you sure you want to logout?')) {
+        localStorage.removeItem('user');
+        window.location.href = '../auth/login.html';
+    }
+}
+
+function loadUserData() {
+    const user = JSON.parse(localStorage.getItem('user')) || { name: 'John Doe', email: 'john@example.com' };
+    document.getElementById('userName').textContent = user.name;
+    document.getElementById('userEmail').textContent = user.email;
+    const initials = user.name.split(' ').map(n => n[0]).join('').toUpperCase();
+    document.getElementById('userAvatar').textContent = initials;
+}
+
+document.addEventListener('click', function(e) {
+    const navLinks = document.getElementById('navLinks');
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    if (!navLinks.contains(e.target) && !menuBtn.contains(e.target)) {
+        navLinks.classList.remove('active');
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    loadUserData();
+    loadCities();
+});
+
+function loadCities() {
+    fetch('../api/get_centers_for_dropdown.php')
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const citySelect = document.getElementById('citySelect');
+                citySelect.innerHTML = '<option value="">-- Choose a City --</option>';
+                data.cities.forEach(city => {
+                    citySelect.innerHTML += `<option value="${city}">${city}</option>`;
+                });
+            }
+        })
+        .catch(error => console.error('Error loading cities:', error));
+}
+
+document.getElementById('citySelect').addEventListener('change', function() {
+    const city = this.value;
+    const centerSelect = document.getElementById('centerSelect');
+    
+    if (!city) {
+        centerSelect.innerHTML = '<option value="">-- First select a city --</option>';
+        centerSelect.disabled = true;
+        return;
+    }
+    
+    centerSelect.innerHTML = '<option value="">Loading centers...</option>';
+    centerSelect.disabled = true;
+    
+    fetch(`../api/get_centers_for_dropdown.php?city=${encodeURIComponent(city)}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                centerSelect.innerHTML = '<option value="">-- Select a Center --</option>';
+                data.centers.forEach(center => {
+                    centerSelect.innerHTML += `<option value="${center.id}">${center.name} - ${center.address}</option>`;
+                });
+                centerSelect.disabled = false;
+            }
+        })
+        .catch(error => {
+            console.error('Error loading centers:', error);
+            centerSelect.innerHTML = '<option value="">Error loading centers</option>';
+        });
+});
+
+document.getElementById('serviceRequestForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const user = JSON.parse(localStorage.getItem('user')) || { id: 1 };
+    
+    const formData = {
+        user_id: user.id || 1,
+        city: document.getElementById('citySelect').value,
+        center_id: document.getElementById('centerSelect').value,
+        request_type: document.getElementById('serviceType').value,
+        contact_name: document.getElementById('contactName').value,
+        contact_email: document.getElementById('contactEmail').value,
+        contact_phone: document.getElementById('contactPhone').value,
+        address: document.getElementById('address').value,
+        pincode: document.getElementById('pincode').value,
+        preferred_date: document.getElementById('preferredDate').value,
+        preferred_time: document.getElementById('preferredTime').value,
+        special_instructions: document.getElementById('specialInstructions').value
+    };
+    
+    const messageDiv = document.getElementById('formMessage');
+    messageDiv.style.display = 'block';
+    messageDiv.className = 'message-box';
+    messageDiv.innerHTML = '<p>Submitting request...</p>';
+    
+    fetch('../api/submit_service_request.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            messageDiv.className = 'message-box success';
+            messageDiv.innerHTML = `<p>✓ Request submitted successfully! Request ID: ${data.request_id}. You earned ${data.points_awarded} Green Points!</p>`;
+            document.getElementById('serviceRequestForm').reset();
+            document.getElementById('centerSelect').innerHTML = '<option value="">-- First select a city --</option>';
+            document.getElementById('centerSelect').disabled = true;
+        } else {
+            messageDiv.className = 'message-box error';
+            messageDiv.innerHTML = `<p>✗ Error: ${data.message}</p>`;
         }
-    }
-
-    function loadUserData() {
-        const user = JSON.parse(localStorage.getItem('user')) || { name: 'John Doe', email: 'john@example.com' };
-        document.getElementById('userName').textContent = user.name;
-        document.getElementById('userEmail').textContent = user.email;
-        const initials = user.name.split(' ').map(n => n[0]).join('').toUpperCase();
-        document.getElementById('userAvatar').textContent = initials;
-    }
-
-    document.addEventListener('click', function(e) {
-        const navLinks = document.getElementById('navLinks');
-        const menuBtn = document.querySelector('.mobile-menu-btn');
-        if (!navLinks.contains(e.target) && !menuBtn.contains(e.target)) {
-            navLinks.classList.remove('active');
-        }
+    })
+    .catch(error => {
+        console.error('Error submitting form:', error);
+        messageDiv.className = 'message-box error';
+        messageDiv.innerHTML = '<p>✗ Network error. Please try again.</p>';
     });
+});
 
-    document.addEventListener('DOMContentLoaded', loadUserData);
+function loadMyRequests() {
+    const user = JSON.parse(localStorage.getItem('user')) || { id: 1 };
+    const container = document.getElementById('requestsContainer');
+    container.innerHTML = '<p style="text-align: center; color: #7dffb3;">Loading requests...</p>';
+    
+    fetch(`../api/get_service_requests.php?user_id=${user.id || 1}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                if (data.requests.length === 0) {
+                    container.innerHTML = '<p style="text-align: center; color: rgba(255, 255, 255, 0.7);">No service requests found</p>';
+                    return;
+                }
+                displayRequests(data.requests);
+            } else {
+                container.innerHTML = `<p style="text-align: center; color: #ff6b6b;">Error: ${data.message}</p>`;
+            }
+        })
+        .catch(error => {
+            console.error('Error loading requests:', error);
+            container.innerHTML = '<p style="text-align: center; color: #ff6b6b;">Error loading requests</p>';
+        });
+}
+
+function displayRequests(requests) {
+    const container = document.getElementById('requestsContainer');
+    const statusColors = {
+        'Pending': { color: '#ffa500', bg: 'rgba(255, 165, 0, 0.2)' },
+        'Approved': { color: '#7dffb3', bg: 'rgba(125, 255, 179, 0.2)' },
+        'In Progress': { color: '#00bfff', bg: 'rgba(0, 191, 255, 0.2)' },
+        'Completed': { color: '#32cd32', bg: 'rgba(50, 205, 50, 0.2)' },
+        'Cancelled': { color: '#ff6b6b', bg: 'rgba(255, 107, 107, 0.2)' }
+    };
+    
+    let html = `<table class="requests-table">
+        <thead>
+            <tr>
+                <th>Request ID</th>
+                <th>Service Type</th>
+                <th>Center</th>
+                <th>City</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>`;
+    
+    requests.forEach(req => {
+        const statusStyle = statusColors[req.status] || { color: '#ffffff', bg: 'rgba(255, 255, 255, 0.1)' };
+        html += `<tr>
+            <td class="request-id">${req.request_id}</td>
+            <td>${req.request_type}</td>
+            <td>${req.center_name}</td>
+            <td>${req.city}</td>
+            <td><span class="status-badge" style="background: ${statusStyle.bg}; color: ${statusStyle.color};">${req.status}</span></td>
+            <td>${new Date(req.preferred_date || req.created_at).toLocaleDateString()}</td>
+            <td>${req.status === 'Pending' ? `<button class="cancel-btn" onclick="cancelRequest(${req.id})">Cancel</button>` : '<span style="color: rgba(255,255,255,0.5);">-</span>'}</td>
+        </tr>`;
+    });
+    
+    html += '</tbody></table>';
+    container.innerHTML = html;
+}
+
+function cancelRequest(requestId) {
+    if (!confirm('Are you sure you want to cancel this request?')) return;
+    
+    const user = JSON.parse(localStorage.getItem('user')) || { id: 1 };
+    
+    fetch('../api/cancel_service_request.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ request_id: requestId, user_id: user.id || 1 })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('Request cancelled successfully!');
+            loadMyRequests();
+        } else {
+            alert('Error: ' + data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error cancelling request:', error);
+        alert('Network error. Please try again.');
+    });
+}
 </script>
 
 </body>

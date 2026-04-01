@@ -42,24 +42,20 @@ if ($lat !== null && $lng !== null) {
             latitude,
             longitude,
             (6371 * acos(
-                cos(radians(:lat)) * 
+                cos(radians(?)) * 
                 cos(radians(latitude)) * 
-                cos(radians(longitude) - radians(:lng)) + 
-                sin(radians(:lat)) * 
+                cos(radians(longitude) - radians(?)) + 
+                sin(radians(?)) * 
                 sin(radians(latitude))
             )) AS distance
         FROM recycling_centers 
         WHERE is_active = 1
-        HAVING distance <= :radius
+        HAVING distance <= ?
         ORDER BY distance ASC
         LIMIT 20";
         
         $stmt = $pdo->prepare($sql);
-        $stmt->execute([
-            ':lat' => $lat,
-            ':lng' => $lng,
-            ':radius' => $radius
-        ]);
+        $stmt->execute([$lat, $lng, $lat, $radius]);
         
         $centers = $stmt->fetchAll(PDO::FETCH_ASSOC);
         

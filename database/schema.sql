@@ -380,6 +380,41 @@ CREATE TABLE IF NOT EXISTS contact_messages (
 ) ENGINE=InnoDB;
 
 -- ============================================
+-- SERVICE REQUESTS TABLE (request_for_services)
+-- Complete waste management service bookings
+-- ============================================
+CREATE TABLE IF NOT EXISTS request_for_services (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    request_id VARCHAR(50) NOT NULL UNIQUE,
+    user_id INT NOT NULL,
+    city VARCHAR(50) NOT NULL,
+    center_id INT NOT NULL,
+    center_name VARCHAR(100),
+    request_type ENUM('Household Waste Pickup', 'Industrial Waste Disposal', 'Recycling Services', 'Hazardous Waste Handling', 'Bulk Pickup') NOT NULL,
+    status ENUM('Pending', 'Approved', 'In Progress', 'Completed', 'Cancelled') DEFAULT 'Pending',
+    contact_name VARCHAR(100),
+    contact_email VARCHAR(100),
+    contact_phone VARCHAR(20),
+    address TEXT,
+    pincode VARCHAR(10),
+    preferred_date DATE,
+    preferred_time VARCHAR(20),
+    special_instructions TEXT,
+    points_awarded INT DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    assigned_at TIMESTAMP NULL,
+    completed_at TIMESTAMP NULL,
+    
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    INDEX idx_user_id (user_id),
+    INDEX idx_status (status),
+    INDEX idx_city (city),
+    INDEX idx_request_type (request_type),
+    INDEX idx_created_at (created_at)
+) ENGINE=InnoDB;
+
+-- ============================================
 -- INSERT DEFAULT DATA
 -- ============================================
 

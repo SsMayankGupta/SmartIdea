@@ -1,366 +1,1076 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <title>EcoConnect | Waste Management Solutions</title>
-
-  <!-- Google Fonts - Poppins, Cinzel, Playfair Display -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Font Awesome Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/quiz.css">
+  <style>
+    * {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0b5d3b 0%, #1a8c5e 50%, #2ecc71 100%);
+      color: #ffffff;
+    }
+
+    header {
+      background: rgba(11, 93, 59, 0.3);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 15px 30px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Cinzel', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: #ffffff;
+      text-decoration: none;
+      letter-spacing: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: #ffffff;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #7dffb3;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after, .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .nav-actions a {
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .login { color: #ffffff; }
+
+    .signup-btn {
+      background: linear-gradient(135deg, #7dffb3, #2ecc71);
+      color: #0b5d3b;
+      padding: 10px 24px;
+      border-radius: 25px;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .hero {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .hero-content h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      letter-spacing: 4px;
+    }
+
+    .hero-content h1 span { color: #7dffb3; }
+
+    .hero-content p {
+      font-size: 1.3rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 40px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-btn-primary, .hero-btn-secondary {
+      padding: 18px 40px;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .hero-btn-primary {
+      background: linear-gradient(135deg, #7dffb3, #2ecc71);
+      color: #0b5d3b;
+    }
+
+    .hero-btn-secondary {
+      background: transparent;
+      color: #ffffff;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .hero-btn-primary:hover, .hero-btn-secondary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    /* GET STARTED SECTION */
+    .get-started {
+      padding: 80px 20px;
+      background: transparent;
+    }
+
+    .gs-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .gs-container h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .gs-subtitle {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 40px;
+    }
+
+    .gs-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .gs-card {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: left;
+      transition: all 0.3s ease;
+    }
+
+    .gs-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .gs-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      color: #ffffff;
+    }
+
+    .gs-card p {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.6;
+    }
+
+    .gs-cta {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .gs-btn-primary, .gs-btn-secondary {
+      padding: 16px 40px;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .gs-btn-primary {
+      background: linear-gradient(135deg, #7dffb3, #2ecc71);
+      color: #0b5d3b;
+    }
+
+    .gs-btn-secondary {
+      background: transparent;
+      color: #ffffff;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .gs-btn-primary:hover, .gs-btn-secondary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    /* QUICK OPTIONS CARDS */
+    .quick-options {
+      padding: 60px 20px;
+      display: flex;
+      gap: 25px;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .option-card {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 24px;
+      padding: 35px;
+      text-align: center;
+      width: 220px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .option-card:hover {
+      transform: translateY(-10px);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .option-card img {
+      width: 70px;
+      height: 70px;
+      margin-bottom: 20px;
+      filter: brightness(0) invert(1);
+    }
+
+    .option-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .option-card p {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* SOLUTIONS SECTION */
+    .solutions-section {
+      padding: 80px 20px;
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    .solutions-section h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 3rem;
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .wm-cards {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .wm-card {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 24px;
+      overflow: hidden;
+      width: 350px;
+      transition: all 0.3s ease;
+    }
+
+    .wm-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .wm-img {
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .wm-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .wm-card h3 {
+      padding: 25px 25px 15px;
+      font-size: 1.3rem;
+    }
+
+    .wm-card p {
+      padding: 0 25px;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .wm-link {
+      display: block;
+      padding: 20px 25px 25px;
+      color: #7dffb3;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .wm-link:hover { color: #ffffff; }
+
+    /* QUIZ SECTION */
+    .quiz-section {
+      padding: 80px 20px;
+    }
+
+    .quiz-wrapper {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .quiz-wrapper h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .quiz-sub {
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 40px;
+    }
+
+    .quiz-card {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 24px;
+      padding: 40px;
+    }
+
+    .score-badge {
+      background: linear-gradient(135deg, #7dffb3, #2ecc71);
+      color: #0b5d3b;
+      padding: 10px 20px;
+      border-radius: 25px;
+      display: inline-block;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .quiz-progress {
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 15px;
+    }
+
+    .progress-bar {
+      height: 8px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(135deg, #7dffb3, #2ecc71);
+      transition: width 0.3s ease;
+    }
+
+    .options-container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .option-btn {
+      padding: 16px 24px;
+      background: transparent;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
+      color: #ffffff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .option-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    #nextBtn, #restartBtn {
+      padding: 16px 40px;
+      background: linear-gradient(135deg, #7dffb3, #2ecc71);
+      color: #0b5d3b;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    /* IMPACT SECTION */
+    .impact-section {
+      padding: 80px 20px;
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    .impact-section h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .impact-sub {
+      text-align: center;
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 600px;
+      margin: 0 auto 50px;
+      line-height: 1.6;
+    }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .impact-card {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 30px;
+      transition: all 0.3s ease;
+    }
+
+    .impact-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .impact-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+    }
+
+    .impact-card p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* STATS SECTION */
+    .sustainability {
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .sustainability h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+
+    .stats strong {
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-size: 3rem;
+      color: #7dffb3;
+    }
+
+    /* CTA SECTION */
+    .cta {
+      padding: 80px 20px;
+      background: rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+
+    .cta button {
+      padding: 18px 50px;
+      background: linear-gradient(135deg, #7dffb3, #2ecc71);
+      color: #0b5d3b;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .cta button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      background: rgba(0, 0, 0, 0.3);
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* MODAL */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .modal-content {
+      background: linear-gradient(135deg, #0b5d3b 0%, #1a8c5e 100%);
+      margin: 5% auto;
+      border-radius: 24px;
+      width: 90%;
+      max-width: 600px;
+      max-height: 85vh;
+      overflow-y: auto;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .modal-header {
+      padding: 25px 30px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-header h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      color: #ffffff;
+      margin: 0;
+    }
+
+    .close-btn {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 32px;
+      cursor: pointer;
+    }
+
+    .modal-body { padding: 30px; }
+
+    .form-group { margin-bottom: 20px; }
+
+    .form-group label {
+      display: block;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 18px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
+      background: transparent;
+      color: #ffffff;
+      font-size: 1rem;
+    }
+
+    .next-btn, .submit-btn, .track-btn {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, #7dffb3, #2ecc71);
+      color: #0b5d3b;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    .back-btn {
+      width: 100%;
+      padding: 14px;
+      background: transparent;
+      color: #ffffff;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .mobile-menu-btn { display: block; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(11, 93, 59, 0.95);
+        flex-direction: column;
+        padding: 20px;
+      }
+      .nav-links.active { display: flex; }
+      .nav-actions { display: none; }
+      .hero-content h1 { font-size: 2.5rem; }
+      .hero-buttons { flex-direction: column; }
+      .option-card { width: 100%; max-width: 300px; }
+      .wm-card { width: 100%; }
+      .impact-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 
 <body>
 
-  <header class="navbar">
-    <div class="nav-container">
-
-      <!-- Logo -->
-
-      <div class="logo">
-        <a href="index.html">
-          <img src="images/logo.png" alt="Trash2Treasure Logo">
-        </a>
-      </div>
-
-      <!-- Navigation Links -->
-      <nav>
-        <ul class="nav-links">
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="services/services.html">Services</a></li>
-          <li><a href="#solutions">Solutions</a></li>
-          <li class="dropdown">
-            <a href="#">Sustainability</a>
-            <div class="mega-menu">
-              <div class="mega-left">
-                <div class="mega-column">
-                  <h4>Environmental Responsibility</h4>
-                  <a href="education/clean-city.html">Clean City Initiatives</a>
-                  <a href="education/impact-goals.html">Impact & Reduction Goals</a>
-                  <a href="education/sustainability-reporting.html">Sustainability Reporting</a>
-                </div>
-                <div class="mega-column">
-                  <h4>Smart Recycling</h4>
-                  <a href="education/residential-recycling.html">Residential Recycling</a>
-                  <a href="education/commercial-programs.html">Commercial Programs</a>
-                  <a href="education/recycling-education.html">Recycling Education</a>
-                </div>
-              </div>
-              <div class="mega-right">
-                <img src="images/sustainability.png" alt="Sustainability">
-                <h3>Building a Greener Future</h3>
-                <p>
-                  Discover how EcoConnect promotes responsible waste management,
-                  recycling awareness, and sustainable living.
-                </p>
-                <a href="education/clean-city.html" class="mega-btn">Explore Sustainability →</a>
-              </div>
-            </div>
-          </li>
-          <li><a href="pages/report.html">Report Waste</a></li>
-          <li><a href="pages/dashboard.html">Dashboard</a></li>
-          <li><a href="pages/rewards.html">Rewards</a></li>
-        </ul>
-      </nav>
-
-      <!-- Actions -->
-      <div class="nav-actions">
-        <a href="auth/login.html" class="login">Login</a>
-        <a href="auth/signup.html" class="signup-btn">Sign Up</a>
-      </div>
-
+<header>
+  <div class="header-container">
+    <a href="index.html" class="logo">EcoConnect</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="#" onclick="openServiceBooking(); return false;">Book Service</a></li>
+      <li><a href="services/services.html">Services</a></li>
+      <li><a href="#solutions">Solutions</a></li>
+      <li><a href="pages/report.html">Report</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="auth/login.html" class="login">Login</a>
+      <a href="auth/signup.html" class="signup-btn">Sign Up</a>
     </div>
-  </header>
+    <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+  </div>
+</header>
 
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Trash<span>2</span>Treasure</h1>
-      <p>Smart, sustainable, and reliable waste & recycling solutions.</p>
+<section class="hero">
+  <div class="hero-content">
+    <h1>Trash<span>2</span>Treasure</h1>
+    <p>Smart, sustainable, and reliable waste & recycling solutions.</p>
+    <div class="hero-buttons">
+      <button class="hero-btn-primary" onclick="location.href='services/services.html'">Explore Services</button>
+      <button class="hero-btn-secondary" onclick="location.href='pages/dashboard.html'">Track Requests</button>
+    </div>
+  </div>
+</section>
 
-      <div class="hero-buttons">
-        <!-- Explore Services -->
-        <button class="hero-btn-primary" onclick="location.href='services/services.html'">
-          Explore Services
-        </button>
-
-        <!-- Track Dashboard -->
-        <button class="hero-btn-secondary" onclick="location.href='pages/dashboard.html'">
-          Track My Requests & Rewards
-        </button>
+<section class="get-started">
+  <div class="gs-container">
+    <h2>Welcome to EcoConnect</h2>
+    <p class="gs-subtitle">Your Smart Waste Management Partner</p>
+    <div class="gs-content">
+      <div class="gs-card">
+        <h3>🌱 Our Mission</h3>
+        <p>EcoConnect bridges the gap between citizens and sustainable waste solutions. We make recycling accessible, reporting effortless, and environmental action rewarding.</p>
+      </div>
+      <div class="gs-card">
+        <h3>♻️ Why It Matters</h3>
+        <p>Proper waste management reduces pollution, conserves natural resources, prevents disease spread, and creates cleaner communities.</p>
+      </div>
+      <div class="gs-card">
+        <h3>🌍 Our Impact</h3>
+        <p>Join thousands transforming waste into resources. Every item recycled and every service booked brings us closer to a zero-waste future.</p>
       </div>
     </div>
-  </section>
-
-  <!-- GET STARTED SECTION -->
-  <section class="get-started">
-    <div class="gs-container">
-      <h2>Find Waste Management Services</h2>
-
-      <div class="gs-form">
-        <input type="text" placeholder="Enter the Location">
-
-        <select id="serviceSelect">
-          <option value="">Select Service</option>
-          <option value="dustbin">Book Dustbin</option>
-          <option value="report">Report Waste</option>
-        </select>
-
-        <button onclick="handleService()">Get Started</button>
-      </div>
+    <div class="gs-cta">
+      <button onclick="location.href='services/services.html'" class="gs-btn-primary">Explore Our Services</button>
+      <button onclick="location.href='auth/signup.html'" class="gs-btn-secondary">Join the Movement</button>
     </div>
-  </section>
+  </div>
+</section>
 
+<section class="quick-options">
+  <div class="option-card" onclick="location.href='pages/dispose.html'">
+    <img src="https://cdn-icons-png.flaticon.com/512/679/679922.png" alt="Dispose">
+    <h3>Dispose Smartly</h3>
+    <p>Learn How to Recycle</p>
+  </div>
+  <div class="option-card" onclick="location.href='pages/report.html'">
+    <img src="https://cdn-icons-png.flaticon.com/512/564/564619.png" alt="Report">
+    <h3>Report a Problem</h3>
+    <p>Report an Issue</p>
+  </div>
+  <div class="option-card" onclick="location.href='pages/centers.html'">
+    <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="Centers">
+    <h3>Nearby Recyclers</h3>
+    <p>Find Centers</p>
+  </div>
+  <div class="option-card" onclick="location.href='pages/rewards.html'">
+    <img src="https://cdn-icons-png.flaticon.com/512/2907/2907253.png" alt="Rewards">
+    <h3>Earn Rewards</h3>
+    <p>Get Green Points</p>
+  </div>
+</section>
 
-  <!-- TOP FOUR CARDS (cdn-Content Delivery Network)-->
-  <section class="quick-options">
-
-    <div class="option-card" onclick="location.href='pages/dispose.html'">
-      <img src="https://cdn-icons-png.flaticon.com/512/679/679922.png">
-
-      <h3>Dispose Smartly</h3>
-      <p>Learn How to Recycle</p>
-    </div>
-
-    <div class="option-card" onclick="location.href='pages/report.html'">
-      <img src="https://cdn-icons-png.flaticon.com/512/564/564619.png">
-      <h3>Report a Problem</h3>
-      <p>Report an Issue</p>
-    </div>
-
-    <div class="option-card" onclick="location.href='pages/centers.html'">
-      <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png">
-      <h3>Nearby Recyclers</h3>
-      <p>Find Centers</p>
-    </div>
-
-    <div class="option-card" onclick="location.href='pages/rewards.html'">
-      <img src="https://cdn-icons-png.flaticon.com/512/2907/2907253.png">
-      <h3>Earn Rewards</h3>
-      <p>Get Green Points</p>
-    </div>
-
-  </section>
-
-
-  <!-- BOTTOM TWO CARDS -->
-  <section class="quick-access">
-
-    <div class="quick-box" onclick="location.href='pages/dashboard.html'">
-      <h3>📊 Track Requests</h3>
-      <p>View status of your waste pickup requests</p>
-    </div>
-
-    <div class="quick-box" onclick="location.href='pages/dashboard.html'">
-      <h3>🌱 Track Green Points</h3>
-      <p>Check rewards earned for eco-friendly actions</p>
-    </div>
-
-  </section>
-  <section id="solutions" class="wm-services"></section>
-  <h2 class="wm-title" style="font-size:80px">Our Solutions</h2>
-
+<section class="solutions-section" id="solutions">
+  <h2>Our Solutions</h2>
   <div class="wm-cards">
-
-    <!-- Residential -->
     <div class="wm-card">
       <div class="wm-img">
         <img src="images/resi_waste.png" alt="Residential">
       </div>
       <h3>Residential Waste Pickup</h3>
-      <p>
-        Scheduled doorstep waste collection and recycling services for households,
-        ensuring clean, hygienic, and sustainable neighborhoods.
-      </p>
-
-      <a href="education/residential-recycling.html" class="wm-link">
-        Explore Residential Waste Services
-      </a>
-
+      <p>Scheduled doorstep waste collection and recycling services for households.</p>
+      <a href="education/residential-recycling.html" class="wm-link">Explore →</a>
     </div>
-
-    <!-- Commercial -->
     <div class="wm-card">
       <div class="wm-img">
         <img src="images/office-recycling.png" alt="Commercial">
       </div>
       <h3>Commercial Waste Management</h3>
-      <p>
-        Scalable waste management solutions for offices, institutions,
-        apartments, and commercial establishments with responsible disposal practices.
-      </p>
-      <a href="education/commercial-programs.html" class="wm-link">
-
-
-        Get Commercial Waste Service
-      </a>
-
+      <p>Scalable solutions for offices, institutions, and commercial establishments.</p>
+      <a href="education/commercial-programs.html" class="wm-link">Get Service →</a>
     </div>
-
-    <!-- Smart Reporting -->
     <div class="wm-card">
       <div class="wm-img">
         <img src="https://images.unsplash.com/photo-1604187351574-c75ca79f5807" alt="Reporting">
       </div>
       <h3>Smart Waste Reporting</h3>
-      <p>
-        Report nearby waste using images and location-based tracking
-        to request quick pickup, cleanup, and resolution.
-      </p>
-
-      <a href="pages/report.html" class="wm-link">
-        Report Waste Near You
-      </a>
-
+      <p>Report nearby waste using images and location-based tracking.</p>
+      <a href="pages/report.html" class="wm-link">Report Now →</a>
     </div>
-
   </div>
-  </section>
+</section>
 
-  <section class="quiz-section">
-
-    <div class="quiz-wrapper">
-
-      <h2>♻ Smart Recycling Challenge</h2>
-      <p class="quiz-sub">Test your recycling knowledge and earn green points!</p>
-
-      <div class="quiz-card">
-
-        <div class="score-badge">
-          Green Points: <span id="scoreValue">0</span>
-        </div>
-
-        <div class="quiz-progress">
-          Question <span id="questionNumber"></span>
-        </div>
-
-        <div class="progress-bar">
-          <div class="progress-fill" id="progressFill"></div>
-        </div>
-
-        <h3 id="questionText"></h3>
-
-        <div class="options-container" id="optionsContainer"></div>
-
-        <div id="feedback"></div>
-
-        <button id="nextBtn">Next Question</button>
-
-        <div id="finalResult" style="display:none;">
-          <h3 id="scoreText"></h3>
-          <button id="restartBtn">Restart Quiz</button>
-        </div>
-
+<section class="quiz-section">
+  <div class="quiz-wrapper">
+    <h2>♻ Smart Recycling Challenge</h2>
+    <p class="quiz-sub">Test your recycling knowledge and earn green points!</p>
+    <div class="quiz-card">
+      <div class="score-badge">Green Points: <span id="scoreValue">0</span></div>
+      <div class="quiz-progress">Question <span id="questionNumber">1</span> / 5</div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill" style="width: 20%"></div>
       </div>
-
+      <h3 id="questionText">Loading question...</h3>
+      <div class="options-container" id="optionsContainer">
+        <button class="option-btn">Option 1</button>
+        <button class="option-btn">Option 2</button>
+        <button class="option-btn">Option 3</button>
+        <button class="option-btn">Option 4</button>
+      </div>
+      <div id="feedback"></div>
+      <button id="nextBtn" style="display:none;">Next Question</button>
+      <div id="finalResult" style="display:none;">
+        <h3 id="scoreText"></h3>
+        <button id="restartBtn">Restart Quiz</button>
+      </div>
     </div>
+  </div>
+</section>
 
-    <canvas id="confettiCanvas"></canvas>
-
-  </section>
-
-  <script src="js/quiz.js"></script>
-  <script src="js/quiz.js"></script>
-
-
-
-  <section class="impact-section">
-    <h2>Why EcoConnect Matters</h2>
-    <p class="impact-sub">
-      EcoConnect is not just a waste management platform — it’s a step towards
-      cleaner cities, responsible citizens, and a sustainable future.
-    </p>
-
-    <div class="impact-grid">
-
-      <div class="impact-card">
-        <h3>🌍 Environmental Impact</h3>
-        <p>
-          Reduces landfill waste by promoting recycling, segregation,
-          and responsible disposal practices.
-        </p>
-      </div>
-
-      <div class="impact-card">
-        <h3>👥 Community Participation</h3>
-        <p>
-          Empowers citizens to actively report waste and contribute
-          to cleaner neighborhoods.
-        </p>
-      </div>
-
-      <div class="impact-card">
-        <h3>⚙️ Smart Technology</h3>
-        <p>
-          Uses location-based services, image uploads, and tracking
-          to ensure faster waste resolution.
-        </p>
-      </div>
-
-      <div class="impact-card">
-        <h3>🎁 Rewards & Motivation</h3>
-        <p>
-          Encourages responsible behavior by rewarding users
-          with green points for positive actions.
-        </p>
-      </div>
-
+<section class="impact-section">
+  <h2>Why EcoConnect Matters</h2>
+  <p class="impact-sub">EcoConnect is not just a waste management platform — it's a step towards cleaner cities and a sustainable future.</p>
+  <div class="impact-grid">
+    <div class="impact-card">
+      <h3>🌍 Environmental Impact</h3>
+      <p>Reduces landfill waste by promoting recycling and responsible disposal.</p>
     </div>
-  </section>
-
-
-
-  <section class="sustainability" id="sustainability">
-    <h2>Committed to Sustainability</h2>
-    <p>Reducing environmental impact through smart recycling and waste solutions.</p>
-
-    <div class="stats">
-      <div><strong>1200+</strong><span>Tons Recycled</span></div>
-      <div><strong>45+</strong><span>Centers</span></div>
-      <div><strong>10K+</strong><span>Users</span></div>
-      <div><strong>30%</strong><span>Landfill Reduction</span></div>
+    <div class="impact-card">
+      <h3>👥 Community Participation</h3>
+      <p>Empowers citizens to actively report waste and contribute to cleaner neighborhoods.</p>
     </div>
-  </section>
+    <div class="impact-card">
+      <h3>⚙️ Smart Technology</h3>
+      <p>Uses location-based services and tracking for faster waste resolution.</p>
+    </div>
+    <div class="impact-card">
+      <h3>🎁 Rewards & Motivation</h3>
+      <p>Encourages responsible behavior by rewarding users with green points.</p>
+    </div>
+  </div>
+</section>
 
-  <section class="cta">
-    <h2>Ready to Make a Difference?</h2>
-    <p>Join EcoConnect and help build a cleaner future.</p>
-    <button onclick="location.href='auth/signup.html'">Get Started</button>
-  </section>
+<section class="sustainability">
+  <h2>Committed to Sustainability</h2>
+  <p>Reducing environmental impact through smart recycling and waste solutions.</p>
+  <div class="stats">
+    <div><strong>1200+</strong><span>Tons Recycled</span></div>
+    <div><strong>45+</strong><span>Centers</span></div>
+    <div><strong>10K+</strong><span>Users</span></div>
+    <div><strong>30%</strong><span>Landfill Reduction</span></div>
+  </div>
+</section>
 
-  <footer>
-    <p>© 2026 EcoConnect. All rights reserved.</p>
-  </footer>
+<section class="cta">
+  <h2>Ready to Make a Difference?</h2>
+  <p>Join EcoConnect and help build a cleaner future.</p>
+  <button onclick="location.href='auth/signup.html'">Get Started</button>
+</section>
 
-  <script src="js/report.js"></script>
-  <script src="js/quiz.js"></script>
+<!-- Service Booking Modal -->
+<div id="serviceBookingModal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>🚛 Book a Service</h2>
+      <span class="close-btn" onclick="closeServiceBooking()">&times;</span>
+    </div>
+    <div class="modal-body">
+      <div id="step1" class="booking-step">
+        <h3>Select Your City & Center</h3>
+        <div class="form-group">
+          <label>Select City</label>
+          <select id="citySelect" onchange="loadCenters()">
+            <option value="">-- Select City --</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Select Center</label>
+          <select id="centerSelect">
+            <option value="">-- First Select a City --</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Service Type</label>
+          <select id="bookingServiceType">
+            <option value="">-- Select Service --</option>
+            <option value="Household Waste Pickup">Household Waste Pickup</option>
+            <option value="Recycling Services">Recycling Services</option>
+            <option value="Bulk Pickup">Bulk Pickup</option>
+          </select>
+        </div>
+        <button class="next-btn" onclick="goToStep2()">Next: Your Details</button>
+      </div>
 
-  <script>
-    function handleService() {
-      let service = document.getElementById("serviceSelect").value;
+      <div id="step2" class="booking-step" style="display:none;">
+        <h3>Your Contact Details</h3>
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" id="bookingName" placeholder="Enter your full name">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="bookingEmail" placeholder="Enter your email">
+        </div>
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="tel" id="bookingPhone" placeholder="Enter your phone number">
+        </div>
+        <div class="form-group">
+          <label>Address</label>
+          <textarea id="bookingAddress" rows="3" placeholder="Enter your full address"></textarea>
+        </div>
+        <button class="back-btn" onclick="goToStep1()">Back</button>
+        <button class="submit-btn" onclick="submitServiceBooking()">Submit Request</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-      if (service === "dustbin") {
-        window.location.href = "education/commercial-programs.html?openForm=true";
-      }
-      else if (service === "report") {
-        window.location.href = "pages/report.html";
-      }
-      else {
-        alert("Please select a service");
-      }
+<footer>
+  <p>&copy; 2026 EcoConnect. All rights reserved.</p>
+</footer>
+
+<script src="js/quiz.js"></script>
+
+<script>
+  function toggleMenu() {
+    const navLinks = document.getElementById('navLinks');
+    navLinks.classList.toggle('active');
+  }
+
+  function openServiceBooking() {
+    document.getElementById('serviceBookingModal').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    loadCities();
+  }
+
+  function closeServiceBooking() {
+    document.getElementById('serviceBookingModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+
+  function goToStep1() {
+    document.getElementById('step1').style.display = 'block';
+    document.getElementById('step2').style.display = 'none';
+  }
+
+  function goToStep2() {
+    const city = document.getElementById('citySelect').value;
+    const center = document.getElementById('centerSelect').value;
+    const serviceType = document.getElementById('bookingServiceType').value;
+
+    if (!city || !center || !serviceType) {
+      alert('Please select city, center, and service type');
+      return;
     }
-  </script>
-</body>
+    document.getElementById('step1').style.display = 'none';
+    document.getElementById('step2').style.display = 'block';
+  }
 
+  async function loadCities() {
+    try {
+      const response = await fetch('api/get_centers_for_dropdown.php');
+      const data = await response.json();
+      if (data.success) {
+        const citySelect = document.getElementById('citySelect');
+        citySelect.innerHTML = '<option value="">-- Select City --</option>';
+        data.cities.forEach(city => {
+          const option = document.createElement('option');
+          option.value = city;
+          option.textContent = city;
+          citySelect.appendChild(option);
+        });
+      }
+    } catch (error) {
+      console.error('Error loading cities:', error);
+    }
+  }
+
+  async function loadCenters() {
+    const city = document.getElementById('citySelect').value;
+    const centerSelect = document.getElementById('centerSelect');
+    if (!city) {
+      centerSelect.innerHTML = '<option value="">-- First Select a City --</option>';
+      return;
+    }
+    try {
+      const response = await fetch(`api/get_centers_for_dropdown.php?city=${encodeURIComponent(city)}`);
+      const data = await response.json();
+      if (data.success) {
+        centerSelect.innerHTML = '<option value="">-- Select Center --</option>';
+        data.centers.forEach(center => {
+          const option = document.createElement('option');
+          option.value = center.id;
+          option.textContent = center.name;
+          centerSelect.appendChild(option);
+        });
+      }
+    } catch (error) {
+      console.error('Error loading centers:', error);
+    }
+  }
+
+  async function submitServiceBooking() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    const requestData = {
+      user_id: user ? user.id : 9991,
+      city: document.getElementById('citySelect').value,
+      center_id: document.getElementById('centerSelect').value,
+      request_type: document.getElementById('bookingServiceType').value,
+      contact_name: document.getElementById('bookingName').value,
+      contact_email: document.getElementById('bookingEmail').value,
+      contact_phone: document.getElementById('bookingPhone').value,
+      address: document.getElementById('bookingAddress').value,
+    };
+
+    if (!requestData.contact_name || !requestData.contact_email || !requestData.contact_phone || !requestData.address) {
+      alert('Please fill all required fields');
+      return;
+    }
+
+    try {
+      const response = await fetch('api/submit_service_request.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(requestData)
+      });
+      const data = await response.json();
+      if (data.success) {
+        alert('Request submitted successfully! Request ID: ' + data.request_id);
+        closeServiceBooking();
+      } else {
+        alert('Error: ' + data.message);
+      }
+    } catch (error) {
+      console.error('Error submitting request:', error);
+      alert('Failed to submit request. Please try again.');
+    }
+  }
+
+  window.onclick = function(event) {
+    const modal = document.getElementById('serviceBookingModal');
+    if (event.target === modal) {
+      closeServiceBooking();
+    }
+  }
+</script>
+
+</body>
 </html>

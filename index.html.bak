@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EcoConnect | Waste Management Solutions</title>
+
+  <!-- Google Fonts - Montserrat & Cinzel -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0b5d3b 0%, #1a8c5e 50%, #2ecc71 100%);
+      color: #ffffff;
+    }
+
+    /* HEADER */
+    header {
+      background: rgba(11, 93, 59, 0.3);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 15px 30px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Cinzel', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: #ffffff;
+      text-decoration: none;
+      letter-spacing: 2px;
+    }
+
+    /* NAVIGATION */
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #ffffff;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #7dffb3;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    /* DROPDOWN */
+    .dropdown {
+      position: relative;
+    }
+
+    .mega-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: rgba(11, 93, 59, 0.95);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      padding: 20px;
+      min-width: 500px;
+      display: none;
+      flex-direction: row;
+      gap: 20px;
+      margin-top: 10px;
+    }
+
+    .dropdown:hover .mega-menu {
+      display: flex;
+    }
+
+    .mega-left {
+      display: flex;
+      gap: 20px;
+    }
+
+    .mega-column {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .mega-column h4 {
+      color: #7dffb3;
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    .mega-column a {
+      font-size: 12px;
+      padding: 5px 0;
+    }
+
+    .mega-column a::after {
+      display: none;
+    }
+
+    .mega-right {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .mega-right img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 10px;
+    }
+
+    .mega-right h3 {
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    .mega-right p {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .mega-btn {
+      background: linear-gradient(135deg, #7dffb3, #2ecc71);
+      color: #0b5d3b;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 10px;
+      text-decoration: none;
+    }
+
+    /* NAV ACTIONS */
+    .nav-actions {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .nav-actions a {
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .login {
+      color: #ffffff;
+    }
+
+    .signup-btn {
+      background: linear-gradient(135deg, #7dffb3, #2ecc71);
+      color: #0b5d3b;
+      padding: 10px 24px;
+      border-radius: 25px;
+    }
+
+    .signup-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(125, 255, 179, 0.3);
+    }
+
+    /* MOBILE MENU */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .hero-content h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      letter-spacing: 4px;
+    }
+
+    .hero-content h1 span {
+      color: #7dffb3;
+    }
+
+    .hero-content p {
+      font-size: 1.3rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 40px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-btn-primary, .hero-btn-secondary {
+      padding: 18px 40px;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .hero-btn-primary {
+      background: linear-gradient(135deg, #7dffb3, #2ecc71);
+      color: #0b5d3b;
+    }
+
+    .hero-btn-secondary {
+      background: transparent;
+      color: #ffffff;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .hero-btn-primary:hover, .hero-btn-secondary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    /* GET STARTED SECTION */
+    .get-started {
+      padding: 80px 20px;
+      background: transparent;
+    }
+
+    .gs-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .gs-container h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .gs-subtitle {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 40px;
+    }
+
+    .gs-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .gs-card {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: left;
+      transition: all 0.3s ease;
+    }
+
+    .gs-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .gs-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      color: #ffffff;
+    }
+
+    .gs-card p {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.6;
+    }
+
+    .gs-cta {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .gs-btn-primary, .gs-btn-secondary {
+      padding: 16px 40px;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .gs-btn-primary {
+      background: linear-gradient(135deg, #7dffb3, #2ecc71);
+      color: #0b5d3b;
+    }
+
+    .gs-btn-secondary {
+      background: transparent;
+      color: #ffffff;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .gs-btn-primary:hover, .gs-btn-secondary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    /* QUICK OPTIONS CARDS */
+    .quick-options {
+      padding: 60px 20px;
+      display: flex;
+      gap: 25px;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .option-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 24px;
+      padding: 35px;
+      text-align: center;
+      width: 220px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .option-card:hover {
+      transform: translateY(-10px);
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .option-card img {
+      width: 70px;
+      height: 70px;
+      margin-bottom: 20px;
+      filter: brightness(0) invert(1);
+    }
+
+    .impact-card p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* STATS SECTION */
+    .sustainability {
+      padding: 80px 20px;
+      text-align: center;
+    }
+        <h3>🌱 Our Mission</h3>
+        <p>EcoConnect bridges the gap between citizens and sustainable waste solutions. We make recycling accessible, reporting effortless, and environmental action rewarding.</p>
+      </div>
+      <div class="gs-card">
+        <h3>♻️ Why It Matters</h3>
+        <p>Proper waste management reduces pollution, conserves natural resources, prevents disease spread, and creates cleaner, healthier communities for future generations.</p>
+      </div>
+      <div class="gs-card">
+        <h3>🌍 Our Impact</h3>
+        <p>Join thousands of citizens transforming waste into resources. Every item recycled, every report filed, and every service booked brings us closer to a zero-waste future.</p>
+      </div>
+    </div>
+    <div class="gs-cta">
+      <button onclick="location.href='services/services.html'" class="gs-btn-primary">Explore Our Services</button>
+      <button onclick="location.href='auth/signup.html'" class="gs-btn-secondary">Join the Movement</button>
+    </div>
+  </div>
+</section>
+
+<section class="quick-options">
+  <div class="option-card" onclick="location.href='pages/dispose.html'">
+    <img src="https://cdn-icons-png.flaticon.com/512/679/679922.png" alt="Dispose">
+    <h3>Dispose Smartly</h3>
+    <p>Learn How to Recycle</p>
+  </div>
+  <div class="option-card" onclick="location.href='pages/report.html'">
+    <img src="https://cdn-icons-png.flaticon.com/512/564/564619.png" alt="Report">
+    <h3>Report a Problem</h3>
+    <p>Report an Issue</p>
+  </div>
+  <div class="option-card" onclick="location.href='pages/centers.html'">
+    <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="Centers">
+    <h3>Nearby Recyclers</h3>
+    <p>Find Centers</p>
+  </div>
+  <div class="option-card" onclick="location.href='pages/rewards.html'">
+    <img src="https://cdn-icons-png.flaticon.com/512/2907/2907253.png" alt="Rewards">
+    <h3>Earn Rewards</h3>
+    <p>Get Green Points</p>
+  </div>
+</section>
+
+<section class="quick-access">
+  <div class="quick-box" onclick="location.href='pages/dashboard.html'">
+    <h3>📊 Track Requests</h3>
+    <p>View status of your waste pickup requests</p>
+  </div>
+  <div class="quick-box" onclick="location.href='pages/dashboard.html'">
+    <h3>🌱 Track Green Points</h3>
+    <p>Check rewards earned for eco-friendly actions</p>
+  </div>
+</section>
+
+<section class="solutions-section" id="solutions">
+  <h2>Our Solutions</h2>
+  <div class="wm-cards">
+    <div class="wm-card">
+      <div class="wm-img">
+        <img src="images/resi_waste.png" alt="Residential">
+      </div>
+      <h3>Residential Waste Pickup</h3>
+      <p>Scheduled doorstep waste collection and recycling services for households, ensuring clean, hygienic, and sustainable neighborhoods.</p>
+      <a href="education/residential-recycling.html" class="wm-link">Explore Residential Waste Services →</a>
+    </div>
+    <div class="wm-card">
+      <div class="wm-img">
+        <img src="images/office-recycling.png" alt="Commercial">
+      </div>
+      <h3>Commercial Waste Management</h3>
+      <p>Scalable waste management solutions for offices, institutions, apartments, and commercial establishments with responsible disposal practices.</p>
+      <a href="education/commercial-programs.html" class="wm-link">Get Commercial Waste Service →</a>
+    </div>
+    <div class="wm-card">
+      <div class="wm-img">
+        <img src="https://images.unsplash.com/photo-1604187351574-c75ca79f5807" alt="Reporting">
+      </div>
+      <h3>Smart Waste Reporting</h3>
+      <p>Report nearby waste using images and location-based tracking to request quick pickup, cleanup, and resolution.</p>
+      <a href="pages/report.html" class="wm-link">Report Waste Near You →</a>
+    </div>
+  </div>
+</section>
+
+<section class="quiz-section">
+  <div class="quiz-wrapper">
+    <h2>♻ Smart Recycling Challenge</h2>
+    <p class="quiz-sub">Test your recycling knowledge and earn green points!</p>
+    <div class="quiz-card">
+      <div class="score-badge">Green Points: <span id="scoreValue">0</span></div>
+      <div class="quiz-progress">Question <span id="questionNumber">1</span> / 5</div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill" style="width: 20%"></div>
+      </div>
+      <h3 id="questionText">Loading question...</h3>
+      <div class="options-container" id="optionsContainer">
+        <button class="option-btn">Option 1</button>
+        <button class="option-btn">Option 2</button>
+        <button class="option-btn">Option 3</button>
+        <button class="option-btn">Option 4</button>
+      </div>
+      <div id="feedback"></div>
+      <button id="nextBtn" style="display:none;">Next Question</button>
+      <div id="finalResult" style="display:none;">
+        <h3 id="scoreText"></h3>
+        <button id="restartBtn">Restart Quiz</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="impact-section">
+  <h2>Why EcoConnect Matters</h2>
+  <p class="impact-sub">EcoConnect is not just a waste management platform — it's a step towards cleaner cities, responsible citizens, and a sustainable future.</p>
+  <div class="impact-grid">
+    <div class="impact-card">
+      <h3>🌍 Environmental Impact</h3>
+      <p>Reduces landfill waste by promoting recycling, segregation, and responsible disposal practices.</p>
+    </div>
+    <div class="impact-card">
+      <h3>👥 Community Participation</h3>
+      <p>Empowers citizens to actively report waste and contribute to cleaner neighborhoods.</p>
+    </div>
+    <div class="impact-card">
+      <h3>⚙️ Smart Technology</h3>
+      <p>Uses location-based services, image uploads, and tracking to ensure faster waste resolution.</p>
+    </div>
+    <div class="impact-card">
+      <h3>🎁 Rewards & Motivation</h3>
+      <p>Encourages responsible behavior by rewarding users with green points for positive actions.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sustainability">
+  <h2>Committed to Sustainability</h2>
+  <p>Reducing environmental impact through smart recycling and waste solutions.</p>
+  <div class="stats">
+    <div><strong>1200+</strong><span>Tons Recycled</span></div>
+    <div><strong>45+</strong><span>Centers</span></div>
+    <div><strong>10K+</strong><span>Users</span></div>
+    <div><strong>30%</strong><span>Landfill Reduction</span></div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>Ready to Make a Difference?</h2>
+  <p>Join EcoConnect and help build a cleaner future.</p>
+  <button onclick="location.href='auth/signup.html'">Get Started</button>
+</section>
+
+<!-- Service Booking Modal -->
+<div id="serviceBookingModal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>🚛 Waste Management Services</h2>
+      <span class="close-btn" onclick="closeServiceBooking()">&times;</span>
+    </div>
+    <div class="modal-body">
+      <!-- Step 1: Select City & Center -->
+      <div id="step1" class="booking-step">
+        <h3>Select Your City & Center</h3>
+        <div class="form-group">
+          <label>Select City</label>
+          <select id="citySelect" onchange="loadCenters()">
+            <option value="">-- Select City --</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Select Center</label>
+          <select id="centerSelect">
+            <option value="">-- First Select a City --</option>
+          </select>
+          <div id="centerDetails" class="center-details" style="display:none;"></div>
+        </div>
+        <div class="form-group">
+          <label>Service Type</label>
+          <select id="bookingServiceType">
+            <option value="">-- Select Service --</option>
+            <option value="Household Waste Pickup">Household Waste Pickup</option>
+            <option value="Industrial Waste Disposal">Industrial Waste Disposal</option>
+            <option value="Recycling Services">Recycling Services</option>
+            <option value="Hazardous Waste Handling">Hazardous Waste Handling</option>
+            <option value="Bulk Pickup">Bulk Pickup</option>
+          </select>
+        </div>
+        <button class="next-btn" onclick="goToStep2()">Next: Your Details</button>
+      </div>
+
+      <!-- Step 2: User Details -->
+      <div id="step2" class="booking-step" style="display:none;">
+        <h3>Your Contact Details</h3>
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" id="bookingName" placeholder="Enter your full name">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="bookingEmail" placeholder="Enter your email">
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" id="bookingPhone" placeholder="Enter your phone number">
+        </div>
+        <div class="form-group">
+          <label>Complete Address</label>
+          <textarea id="bookingAddress" rows="3" placeholder="Enter your full address"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Pincode</label>
+          <input type="text" id="bookingPincode" placeholder="Enter pincode">
+        </div>
+        <div class="form-row">
+          <div class="form-group half">
+            <label>Preferred Date</label>
+            <input type="date" id="bookingDate">
+          </div>
+          <div class="form-group half">
+            <label>Preferred Time</label>
+            <select id="bookingTime">
+              <option value="">Anytime</option>
+              <option value="Morning (8AM-12PM)">Morning (8AM-12PM)</option>
+              <option value="Afternoon (12PM-4PM)">Afternoon (12PM-4PM)</option>
+              <option value="Evening (4PM-8PM)">Evening (4PM-8PM)</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Special Instructions (Optional)</label>
+          <textarea id="bookingInstructions" rows="2" placeholder="Any specific requirements..."></textarea>
+        </div>
+        <div class="btn-group">
+          <button class="back-btn" onclick="goToStep1()">Back</button>
+          <button class="submit-btn" onclick="submitServiceBooking()">Submit Request</button>
+        </div>
+      </div>
+
+      <!-- Step 3: Success & Tracking -->
+      <div id="step3" class="booking-step" style="display:none;">
+        <div class="success-message">
+          <div class="success-icon">✅</div>
+          <h3>Request Submitted Successfully!</h3>
+          <p>Your service request has been received.</p>
+          <div class="request-id-box">
+            <label>Request ID:</label>
+            <span id="submittedRequestId" class="request-id"></span>
+          </div>
+          <p class="points-earned">🎉 You earned <strong>50 Green Points</strong>!</p>
+        </div>
+        <button class="track-btn" onclick="showTrackingInterface()">Track My Request</button>
+        <button class="new-request-btn" onclick="resetBookingForm()">Book Another Service</button>
+      </div>
+
+      <!-- Tracking Interface -->
+      <div id="trackingView" class="booking-step" style="display:none;">
+        <h3>📍 Track Your Requests</h3>
+        <div id="trackingList" class="tracking-list">
+          <p>Loading your requests...</p>
+        </div>
+        <button class="back-btn" onclick="closeServiceBooking()">Close</button>
+      </div>
+
+      <!-- Single Request Tracking Detail -->
+      <div id="trackingDetailView" class="booking-step" style="display:none;">
+        <h3>Request Details</h3>
+        <div id="trackingDetail" class="tracking-detail"></div>
+        <button class="back-btn" onclick="showTrackingInterface()">Back to All Requests</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2026 EcoConnect. All rights reserved.</p>
+</footer>
+
+<script src="js/quiz.js"></script>
+
+<script>
+  // Service Booking API Configuration
+  const SERVICE_API_BASE = (() => {
+    const path = window.location.pathname;
+    if (path.includes('/pages/')) {
+      return path.substring(0, path.indexOf('/pages/')) + '/api';
+    }
+    return path.substring(0, path.lastIndexOf('/') + 1) + 'api';
+  })();
+
+  // Global variables
+  let availableCities = [];
+  let availableCenters = [];
+  let currentUser = JSON.parse(localStorage.getItem('user')) || null;
+
+  // Load cities on page load
+  document.addEventListener('DOMContentLoaded', function() {
+    loadCities();
+    setMinDateForBooking();
+  });
+
+  function setMinDateForBooking() {
+    const today = new Date().toISOString().split('T')[0];
+    const dateInput = document.getElementById('bookingDate');
+    if (dateInput) {
+      dateInput.min = today;
+    }
+  }
+
+  // ================= MODAL FUNCTIONS =================
+  function openServiceBooking() {
+    document.getElementById('serviceBookingModal').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    resetBookingForm();
+    
+    // Pre-fill user data if logged in
+    if (currentUser) {
+      document.getElementById('bookingName').value = currentUser.name || '';
+      document.getElementById('bookingEmail').value = currentUser.email || '';
+      document.getElementById('bookingPhone').value = currentUser.phone || '';
+    }
+  }
+
+  function closeServiceBooking() {
+    document.getElementById('serviceBookingModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+
+  // Close modal when clicking outside
+  window.onclick = function(event) {
+    const modal = document.getElementById('serviceBookingModal');
+    if (event.target === modal) {
+      closeServiceBooking();
+    }
+  }
+
+  // ================= STEP NAVIGATION =================
+  function goToStep1() {
+    document.getElementById('step1').style.display = 'block';
+    document.getElementById('step2').style.display = 'none';
+    document.getElementById('step3').style.display = 'none';
+    document.getElementById('trackingView').style.display = 'none';
+    document.getElementById('trackingDetailView').style.display = 'none';
+  }
+
+  function goToStep2() {
+    const city = document.getElementById('citySelect').value;
+    const center = document.getElementById('centerSelect').value;
+    const serviceType = document.getElementById('bookingServiceType').value;
+
+    if (!city || !center || !serviceType) {
+      alert('Please select city, center, and service type');
+      return;
+    }
+
+    document.getElementById('step1').style.display = 'none';
+    document.getElementById('step2').style.display = 'block';
+    document.getElementById('step3').style.display = 'none';
+  }
+
+  // ================= API FUNCTIONS =================
+  async function loadCities() {
+    try {
+      const response = await fetch(`${SERVICE_API_BASE}/service-booking.php?action=get_cities`);
+      const data = await response.json();
+      
+      if (data.success) {
+        availableCities = data.cities;
+        const citySelect = document.getElementById('citySelect');
+        citySelect.innerHTML = '<option value="">-- Select City --</option>';
+        
+        data.cities.forEach(city => {
+          const option = document.createElement('option');
+          option.value = city;
+          option.textContent = city;
+          citySelect.appendChild(option);
+        });
+      }
+    } catch (error) {
+      console.error('Error loading cities:', error);
+    }
+  }
+
+  async function loadCenters() {
+    const city = document.getElementById('citySelect').value;
+    const centerSelect = document.getElementById('centerSelect');
+    const centerDetails = document.getElementById('centerDetails');
+    
+    if (!city) {
+      centerSelect.innerHTML = '<option value="">-- First Select a City --</option>';
+      centerDetails.style.display = 'none';
+      return;
+    }
+
+    try {
+      const response = await fetch(`${SERVICE_API_BASE}/service-booking.php?action=get_centers&city=${encodeURIComponent(city)}`);
+      const data = await response.json();
+      
+      if (data.success) {
+        availableCenters = data.centers;
+        centerSelect.innerHTML = '<option value="">-- Select Center --</option>';
+        
+        data.centers.forEach(center => {
+          const option = document.createElement('option');
+          option.value = center.id;
+          option.textContent = center.name;
+          centerSelect.appendChild(option);
+        });
+
+        centerSelect.onchange = function() {
+          const selectedCenter = availableCenters.find(c => c.id == this.value);
+          if (selectedCenter) {
+            centerDetails.innerHTML = `
+              <h4>${selectedCenter.name}</h4>
+              <p>📍 ${selectedCenter.address}</p>
+              <p>📞 ${selectedCenter.phone || 'N/A'}</p>
+              <p>⏰ ${selectedCenter.operating_hours || 'Contact for timings'}</p>
+              <p>⭐ Rating: ${selectedCenter.rating || 'N/A'}/5</p>
+            `;
+            centerDetails.style.display = 'block';
+          } else {
+            centerDetails.style.display = 'none';
+          }
+        };
+      }
+    } catch (error) {
+      console.error('Error loading centers:', error);
+    }
+  }
+
+  async function submitServiceBooking() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    
+    const requestData = {
+      user_id: user ? user.id : 9991, // Use demo user ID if not logged in
+      city: document.getElementById('citySelect').value,
+      center_id: document.getElementById('centerSelect').value,
+      request_type: document.getElementById('bookingServiceType').value,
+      contact_name: document.getElementById('bookingName').value,
+      contact_email: document.getElementById('bookingEmail').value,
+      contact_phone: document.getElementById('bookingPhone').value,
+      address: document.getElementById('bookingAddress').value,
+      pincode: document.getElementById('bookingPincode').value,
+      preferred_date: document.getElementById('bookingDate').value,
+      preferred_time: document.getElementById('bookingTime').value,
+      special_instructions: document.getElementById('bookingInstructions').value
+    };
+
+    // Validation
+    if (!requestData.contact_name || !requestData.contact_email || !requestData.contact_phone || !requestData.address) {
+      alert('Please fill all required fields');
+      return;
+    }
+
+    try {
+      const response = await fetch(`${SERVICE_API_BASE}/service-booking.php?action=submit_request`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(requestData)
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        document.getElementById('submittedRequestId').textContent = data.request_id;
+        document.getElementById('step2').style.display = 'none';
+        document.getElementById('step3').style.display = 'block';
+        
+        // Award points to user in localStorage if logged in
+        if (user) {
+          user.green_points = (user.green_points || 0) + data.points_awarded;
+          localStorage.setItem('user', JSON.stringify(user));
+        }
+      } else {
+        alert('Error: ' + (data.error || 'Failed to submit request'));
+      }
+    } catch (error) {
+      console.error('Error submitting request:', error);
+      alert('Failed to submit request. Please try again.');
+    }
+  }
+
+  async function showTrackingInterface() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    const userId = user ? user.id : 9991; // Demo user ID
+
+    document.getElementById('step1').style.display = 'none';
+    document.getElementById('step2').style.display = 'none';
+    document.getElementById('step3').style.display = 'none';
+    document.getElementById('trackingView').style.display = 'block';
+    document.getElementById('trackingDetailView').style.display = 'none';
+
+    try {
+      const response = await fetch(`${SERVICE_API_BASE}/service-booking.php?action=get_user_requests&user_id=${userId}`);
+      const data = await response.json();
+
+      const trackingList = document.getElementById('trackingList');
+      
+      if (data.success && data.requests.length > 0) {
+        trackingList.innerHTML = data.requests.map(req => `
+          <div class="tracking-card" onclick="showRequestDetail('${req.request_id}')">
+            <div class="tracking-card-header">
+              <span class="tracking-card-id">${req.request_id}</span>
+              <span class="tracking-card-status" style="background-color: ${req.status_color}20; color: ${req.status_color}">
+                ${req.status_icon} ${req.status}
+              </span>
+            </div>
+            <div class="tracking-card-type">${req.request_type}</div>
+            <div class="tracking-card-center">${req.center_name}, ${req.city}</div>
+            <div class="progress-bar-container">
+              <div class="progress-bar-fill" style="width: ${req.progress_percent}%"></div>
+            </div>
+            <div style="font-size: 0.8rem; color: rgba(255,255,255,0.6);">
+              Requested: ${new Date(req.created_at).toLocaleDateString()}
+            </div>
+          </div>
+        `).join('');
+      } else {
+        trackingList.innerHTML = `
+          <div style="text-align: center; padding: 40px; color: rgba(255,255,255,0.6);">
+            <p>No requests found.</p>
+            <button class="next-btn" onclick="resetBookingForm()" style="margin-top: 20px;">Book a Service</button>
+          </div>
+        `;
+      }
+    } catch (error) {
+      console.error('Error loading tracking:', error);
+      document.getElementById('trackingList').innerHTML = '<p style="color: rgba(255,255,255,0.6);">Failed to load requests.</p>';
+    }
+  }
+
+  async function showRequestDetail(requestId) {
+    document.getElementById('trackingView').style.display = 'none';
+    document.getElementById('trackingDetailView').style.display = 'block';
+
+    try {
+      const response = await fetch(`${SERVICE_API_BASE}/service-booking.php?action=get_request_status&request_id=${requestId}`);
+      const data = await response.json();
+
+      if (data.success) {
+        const req = data.request;
+        const timeline = req.status_timeline.map(item => `
+          <div class="timeline-item">
+            <div class="timeline-icon ${item.completed ? 'completed' : ''}">${item.icon}</div>
+            <div class="timeline-content">
+              <h4>${item.status}</h4>
+              <p>${item.time ? new Date(item.time).toLocaleString() : 'Pending'}</p>
+            </div>
+          </div>
+        `).join('');
+
+        document.getElementById('trackingDetail').innerHTML = `
+          <div class="tracking-card" style="margin-bottom: 25px;">
+            <div class="tracking-card-header">
+              <span class="tracking-card-id">${req.request_id}</span>
+              <span class="tracking-card-status" style="background-color: ${req.status_color}20; color: ${req.status_color}">
+                ${req.status_icon} ${req.status}
+              </span>
+            </div>
+            <div class="tracking-card-type">${req.request_type}</div>
+            <div class="tracking-card-center">${req.center_name}, ${req.city}</div>
+            <div class="progress-bar-container">
+              <div class="progress-bar-fill" style="width: ${req.progress_percent}%"></div>
+            </div>
+          </div>
+          
+          <h4 style="color: #7dffb3; margin-bottom: 20px;">📍 Service Location</h4>
+          <p style="color: rgba(255,255,255,0.9); margin-bottom: 5px;">${req.address}</p>
+          <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">Pincode: ${req.pincode || 'N/A'}</p>
+          
+          <h4 style="color: #7dffb3; margin: 25px 0 20px;">📋 Contact Details</h4>
+          <p style="color: rgba(255,255,255,0.9); margin-bottom: 5px;">${req.contact_name}</p>
+          <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">📞 ${req.contact_phone}</p>
+          <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">✉️ ${req.contact_email}</p>
+          
+          ${req.preferred_date ? `
+            <h4 style="color: #7dffb3; margin: 25px 0 20px;">📅 Preferred Schedule</h4>
+            <p style="color: rgba(255,255,255,0.9);">${new Date(req.preferred_date).toLocaleDateString()}</p>
+            ${req.preferred_time ? `<p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">⏰ ${req.preferred_time}</p>` : ''}
+          ` : ''}
+          
+          <h4 style="color: #7dffb3; margin: 25px 0 20px;">📈 Status Timeline</h4>
+          <div class="timeline">${timeline}</div>
+          
+          <div style="background: rgba(125, 255, 179, 0.1); border: 1px solid rgba(125, 255, 179, 0.3); border-radius: 12px; padding: 20px; margin-top: 25px; text-align: center;">
+            <p style="color: #7dffb3; font-size: 1.1rem;">🎉 You earned <strong>${req.points_awarded} Green Points</strong> for this request!</p>
+          </div>
+        `;
+      }
+    } catch (error) {
+      console.error('Error loading request detail:', error);
+    }
+  }
+
+  function resetBookingForm() {
+    document.getElementById('citySelect').value = '';
+    document.getElementById('centerSelect').innerHTML = '<option value="">-- First Select a City --</option>';
+    document.getElementById('centerDetails').style.display = 'none';
+    document.getElementById('bookingServiceType').value = '';
+    document.getElementById('bookingName').value = '';
+    document.getElementById('bookingEmail').value = '';
+    document.getElementById('bookingPhone').value = '';
+    document.getElementById('bookingAddress').value = '';
+    document.getElementById('bookingPincode').value = '';
+    document.getElementById('bookingDate').value = '';
+    document.getElementById('bookingTime').value = '';
+    document.getElementById('bookingInstructions').value = '';
+    
+    // Pre-fill user data if logged in
+    if (currentUser) {
+      document.getElementById('bookingName').value = currentUser.name || '';
+      document.getElementById('bookingEmail').value = currentUser.email || '';
+      document.getElementById('bookingPhone').value = currentUser.phone || '';
+    }
+    
+    goToStep1();
+  }
+
+  function toggleMenu() {
+    const navLinks = document.getElementById('navLinks');
+    navLinks.classList.toggle('active');
+  }
+
+  document.addEventListener('click', function(e) {
+    const navLinks = document.getElementById('navLinks');
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    if (!navLinks.contains(e.target) && !menuBtn.contains(e.target)) {
+      navLinks.classList.remove('active');
+    }
+  });
+
+  function handleService() {
+    let service = document.getElementById("serviceSelect").value;
+    if (service === "dustbin") {
+      window.location.href = "education/commercial-programs.html?openForm=true";
+    } else if (service === "report") {
+      window.location.href = "pages/report.html";
+    } else {
+      alert("Please select a service");
+    }
+  }
+</script>
+
+</body>
+</html>
