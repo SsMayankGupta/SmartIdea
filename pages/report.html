@@ -377,32 +377,37 @@ Help us identify garbage issues quickly and contribute to cleaner streets
 </ul>
 </div>
 
-<form class="glass-form">
+<form class="glass-form" id="reportForm">
 <div class="form-grid">
-<input type="text" placeholder="Enter your full name" required>
-<input type="email" placeholder="Enter your email address" required>
-<input type="tel" placeholder="Enter your mobile number" required>
-<select required>
+<input type="text" id="fullName" placeholder="Enter your full name" required>
+<input type="email" id="email" placeholder="Enter your email address" required>
+<input type="tel" id="mobile" placeholder="Enter your mobile number" required>
+<select id="wasteType" required>
 <option value="">Select waste type</option>
-<option>Plastic Waste</option>
-<option>Organic Waste</option>
-<option>E-Waste</option>
-<option>General Waste</option>
+<option value="plastic">Plastic Waste</option>
+<option value="organic">Organic Waste</option>
+<option value="e_waste">E-Waste</option>
+<option value="general">General Waste</option>
+<option value="hazardous">Hazardous Waste</option>
+<option value="construction">Construction Waste</option>
 </select>
-<input type="text" placeholder="Enter your address" required>
-<input type="text" placeholder="Enter your city" required>
-<input type="text" placeholder="Enter pincode" required>
-<input type="file" accept="image/*">
+<input type="text" id="address" placeholder="Enter your address" required>
+<input type="text" id="city" placeholder="Enter your city" required>
+<input type="text" id="pincode" placeholder="Enter pincode" required>
+<input type="file" id="wasteImage" accept="image/*">
 </div>
-<textarea placeholder="Describe the issue in detail..."></textarea>
-<button type="submit">Submit Report</button>
+<textarea id="description" placeholder="Describe the issue in detail..."></textarea>
+<button type="submit" id="submitBtn">Submit Report</button>
 </form>
+
+<div id="messageBox" style="display:none; margin-top:20px; padding:15px; border-radius:12px; text-align:center;"></div>
 </section>
 
 <footer>
 <p>&copy; 2026 EcoConnect. All rights reserved.</p>
 </footer>
 
+<script src="../js/api-client.js"></script>
 <script>
 function toggleMenu() {
 const navLinks = document.getElementById('navLinks');
@@ -417,12 +422,74 @@ window.location.href = '../auth/login.html';
 }
 
 function loadUserData() {
-const user = JSON.parse(localStorage.getItem('user')) || { name: 'John Doe', email: 'john@example.com' };
-document.getElementById('userName').textContent = user.name;
-document.getElementById('userEmail').textContent = user.email;
-const initials = user.name.split(' ').map(n => n[0]).join('').toUpperCase();
-document.getElementById('userAvatar').textContent = initials;
+const user = JSON.parse(localStorage.getItem('user'));
+if (!user) {
+window.location.href = '../auth/login.html';
+return;
 }
+document.getElementById('userName').textContent = user.name || 'User';
+document.getElementById('userEmail').textContent = user.email || '';
+const initials = (user.name || 'U').split(' ').map(n => n[0]).join('').toUpperCase();
+document.getElementById('userAvatar').textContent = initials;
+
+// Pre-fill form with user data
+document.getElementById('fullName').value = user.name || '';
+document.getElementById('email').value = user.email || '';
+document.getElementById('mobile').value = user.mobile || '';
+}
+
+function showMessage(message, isError = false) {
+const msgBox = document.getElementById('messageBox');
+msgBox.textContent = message;
+msgBox.style.display = 'block';
+msgBox.style.background = isError ? 'rgba(255,100,100,0.2)' : 'rgba(100,255,100,0.2)';
+msgBox.style.color = isError ? '#ffcccc' : '#ccffcc';
+msgBox.style.border = '1px solid ' + (isError ? 'rgba(255,100,100,0.5)' : 'rgba(100,255,100,0.5)');
+}
+
+async function handleReportSubmit(e) {
+e.preventDefault();
+
+const user = JSON.parse(localStorage.getItem('user'));
+if (!user || !user.id) {
+showMessage('Please login to submit a report', true);
+return;
+}
+
+const submitBtn = document.getElementById('submitBtn');
+submitBtn.disabled = true;
+submitBtn.textContent = 'Submitting...';
+
+const reportData = {
+waste_type: document.getElementById('wasteType').value,
+location_address: document.getElementById('address').value,
+city: document.getElementById('city').value,
+pincode: document.getElementById('pincode').value,
+description: document.getElementById('description').value
+};
+
+try {
+const result = await ReportAPI.submit(user.id, reportData);
+if (result.success) {
+showMessage(`Report submitted successfully! Report ID: ${result.report_id}. You earned 20 green points!`);
+document.getElementById('reportForm').reset();
+// Pre-fill user data again
+loadUserData();
+} else {
+showMessage(result.error || 'Failed to submit report', true);
+}
+} catch (error) {
+showMessage('Error submitting report. Please try again.', true);
+} finally {
+submitBtn.disabled = false;
+submitBtn.textContent = 'Submit Report';
+}
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+loadUserData();
+document.getElementById('reportForm').addEventListener('submit', handleReportSubmit);
+});
 
 document.addEventListener('click', function(e) {
 const navLinks = document.getElementById('navLinks');
@@ -431,8 +498,6 @@ if (!navLinks.contains(e.target) && !menuBtn.contains(e.target)) {
 navLinks.classList.remove('active');
 }
 });
-
-document.addEventListener('DOMContentLoaded', loadUserData);
 </script>
 
 </body>

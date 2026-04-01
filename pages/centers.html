@@ -366,7 +366,7 @@
 
       <p>OR</p>
 
-      <input type="text" id="manualLocation" placeholder="Enter your area or address">
+      <input type="text" id="manualLocation" placeholder="Enter your area or address" onkeypress="if(event.key==='Enter')searchManual()">
       <button onclick="searchManual()">Search</button>
     </div>
 
@@ -419,6 +419,215 @@
   });
 
   document.addEventListener('DOMContentLoaded', loadUserData);
+
+  // Location and Centers API Functions
+  const API_BASE_URL = '../api/centers.php';
+  let userLat = null;
+  let userLng = null;
+
+  function getUserLocation() {
+    const resultsDiv = document.getElementById('results');
+    resultsDiv.innerHTML = '<p style="text-align:center;color:#7dffb3;">Fetching your location...</p>';
+
+    if (!navigator.geolocation) {
+      resultsDiv.innerHTML = '<p style="text-align:center;color:#ff6b6b;">Geolocation is not supported by your browser. Please use manual search.</p>';
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      function(position) {
+        userLat = position.coords.latitude;
+        userLng = position.coords.longitude;
+        fetchNearbyCenters(userLat, userLng);
+      },
+      function(error) {
+        let message = 'Unable to retrieve your location.';
+        switch(error.code) {
+          case error.PERMISSION_DENIED:
+            message = 'Location access denied. Please enable location permissions or use manual search.';
+            break;
+          case error.POSITION_UNAVAILABLE:
+            message = 'Location information unavailable.';
+            break;
+          case error.TIMEOUT:
+            message = 'Location request timed out.';
+            break;
+        }
+        resultsDiv.innerHTML = '<p style="text-align:center;color:#ff6b6b;">' + message + '</p>';
+      },
+      { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+    );
+  }
+
+  function searchManual() {
+    const city = document.getElementById('manualLocation').value.trim();
+    if (!city) {
+      alert('Please enter a city or area name');
+      return;
+    }
+    fetchCentersByCity(city);
+  }
+
+  function fetchNearbyCenters(lat, lng) {
+    const resultsDiv = document.getElementById('results');
+    resultsDiv.innerHTML = '<p style="text-align:center;color:#7dffb3;">Finding nearby centers...</p>';
+
+    fetch(`${API_BASE_URL}?lat=${lat}&lng=${lng}&radius=15`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (!data.success) {
+          resultsDiv.innerHTML = '<p style="text-align:center;color:#ff6b6b;">Error: ' + (data.message || 'Unknown error') + '</p>';
+          return;
+        }
+        if (data.centers.length > 0) {
+          displayCenters(data.centers, true);
+          showMap(lat, lng, data.centers);
+        } else {
+          resultsDiv.innerHTML = '<p style="text-align:center;color:#ffffff;">No recycling centers found within 15km. Try expanding your search or use manual search.</p>';
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        resultsDiv.innerHTML = '<p style="text-align:center;color:#ff6b6b;">Network error: ' + error.message + '. Check console for details.</p>';
+      });
+  }
+
+  function fetchCentersByCity(city) {
+    const resultsDiv = document.getElementById('results');
+    resultsDiv.innerHTML = '<p style="text-align:center;color:#7dffb3;">Searching in ' + city + '...</p>';
+
+    fetch(`${API_BASE_URL}?city=${encodeURIComponent(city)}`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (!data.success) {
+          resultsDiv.innerHTML = '<p style="text-align:center;color:#ff6b6b;">Error: ' + (data.message || 'Unknown error') + '</p>';
+          return;
+        }
+        if (data.centers.length > 0) {
+          displayCenters(data.centers, false);
+          // Use first center's location for map or default to city center
+          const firstCenter = data.centers[0];
+          if (firstCenter.latitude && firstCenter.longitude) {
+            showMap(firstCenter.latitude, firstCenter.longitude, data.centers);
+          } else {
+            document.getElementById('map').style.display = 'none';
+          }
+        } else {
+          resultsDiv.innerHTML = '<p style="text-align:center;color:#ffffff;">No recycling centers found in "' + city + '". Try a different city name.</p>';
+          document.getElementById('map').style.display = 'none';
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        resultsDiv.innerHTML = '<p style="text-align:center;color:#ff6b6b;">Network error: ' + error.message + '. Check console for details.</p>';
+      });
+  }
+
+  function displayCenters(centers, showDistance) {
+    const resultsDiv = document.getElementById('results');
+    let html = `<h3 style="color:#7dffb3;margin-bottom:20px;text-align:center;">Found ${centers.length} Recycling Center${centers.length !== 1 ? 's' : ''}</h3>`;
+
+    // Table container with overflow for mobile
+    html += '<div style="overflow-x:auto;">';
+    
+    // Table header
+    html += `
+      <table style="width:100%;border-collapse:collapse;background:rgba(255,255,255,0.1);border-radius:12px;overflow:hidden;">
+        <thead>
+          <tr style="background:linear-gradient(135deg,#0b5d3b,#1a8c5e);">
+            <th style="padding:15px;text-align:left;color:#ffffff;font-weight:600;border-bottom:1px solid rgba(255,255,255,0.2);">#</th>
+            ${showDistance ? '<th style="padding:15px;text-align:left;color:#ffffff;font-weight:600;border-bottom:1px solid rgba(255,255,255,0.2);">Distance</th>' : ''}
+            <th style="padding:15px;text-align:left;color:#ffffff;font-weight:600;border-bottom:1px solid rgba(255,255,255,0.2);">Center Name</th>
+            <th style="padding:15px;text-align:left;color:#ffffff;font-weight:600;border-bottom:1px solid rgba(255,255,255,0.2);">Type</th>
+            <th style="padding:15px;text-align:left;color:#ffffff;font-weight:600;border-bottom:1px solid rgba(255,255,255,0.2);">Address</th>
+            <th style="padding:15px;text-align:left;color:#ffffff;font-weight:600;border-bottom:1px solid rgba(255,255,255,0.2);">Phone</th>
+            <th style="padding:15px;text-align:left;color:#ffffff;font-weight:600;border-bottom:1px solid rgba(255,255,255,0.2);">Hours</th>
+            <th style="padding:15px;text-align:left;color:#ffffff;font-weight:600;border-bottom:1px solid rgba(255,255,255,0.2);">Accepted Waste</th>
+            <th style="padding:15px;text-align:left;color:#ffffff;font-weight:600;border-bottom:1px solid rgba(255,255,255,0.2);">Rating</th>
+            <th style="padding:15px;text-align:left;color:#ffffff;font-weight:600;border-bottom:1px solid rgba(255,255,255,0.2);">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+    `;
+
+    // Table rows
+    centers.forEach((center, index) => {
+      const wasteTypes = center.accepted_waste_types.slice(0, 2).map(t => t.replace('_', ' ')).join(', ') + 
+                         (center.accepted_waste_types.length > 2 ? '...' : '');
+      const distanceText = showDistance && center.distance ? `${center.distance} km` : '-';
+      
+      html += `
+        <tr style="border-bottom:1px solid rgba(255,255,255,0.1);transition:background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.15)'" onmouseout="this.style.background='transparent'">
+          <td style="padding:12px 15px;color:#7dffb3;font-weight:600;">${index + 1}</td>
+          ${showDistance ? `<td style="padding:12px 15px;color:#ffffff;">${distanceText}</td>` : ''}
+          <td style="padding:12px 15px;color:#ffffff;font-weight:500;">${center.name}</td>
+          <td style="padding:12px 15px;color:#ffffff;text-transform:capitalize;">${center.type}</td>
+          <td style="padding:12px 15px;color:#ffffff;font-size:13px;">${center.address}, ${center.city}</td>
+          <td style="padding:12px 15px;color:#ffffff;font-size:13px;">${center.phone || '-'}</td>
+          <td style="padding:12px 15px;color:#ffffff;font-size:13px;">${center.operating_hours || '-'}</td>
+          <td style="padding:12px 15px;color:#ffffff;font-size:13px;max-width:150px;">${wasteTypes || '-'}</td>
+          <td style="padding:12px 15px;color:#7dffb3;font-weight:600;">${center.rating ? center.rating + '/5' : '-'}</td>
+          <td style="padding:12px 15px;">
+            ${center.latitude && center.longitude ? `
+              <a href="https://www.google.com/maps/dir/?api=1&destination=${center.latitude},${center.longitude}" 
+                 target="_blank" 
+                 style="background:#7dffb3;color:#0b5d3b;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;font-weight:600;white-space:nowrap;">
+                Directions
+              </a>
+            ` : '-'}
+          </td>
+        </tr>
+      `;
+    });
+
+    html += '</tbody></table></div>';
+
+    resultsDiv.innerHTML = html;
+  }
+
+  function showMap(lat, lng, centers) {
+    const mapFrame = document.getElementById('map');
+    
+    // Build markers for centers
+    let markers = '';
+    centers.forEach((center, index) => {
+      if (center.latitude && center.longitude) {
+        markers += `&markers=color:green%7Clabel:${index + 1}%7C${center.latitude},${center.longitude}`;
+      }
+    });
+    
+    // User location marker
+    const userMarker = `&markers=color:red%7Clabel:U%7C${lat},${lng}`;
+    
+    // Generate Google Maps embed URL
+    const mapUrl = `https://www.google.com/maps/embed/v1/view?key=YOUR_API_KEY&center=${lat},${lng}&zoom=12`;
+    
+    // For demo without API key, use a static map-like view or just directions link
+    mapFrame.style.display = 'none';
+    
+    // Add a helpful message with map link
+    const resultsDiv = document.getElementById('results');
+    resultsDiv.innerHTML += `
+      <div style="text-align:center;margin-top:20px;padding:15px;background:rgba(255,255,255,0.1);border-radius:12px;">
+        <p style="color:#ffffff;margin-bottom:10px;">View all centers on Google Maps:</p>
+        <a href="https://www.google.com/maps/search/recycling+center/@${lat},${lng},14z" 
+           target="_blank" 
+           style="display:inline-block;background:linear-gradient(135deg,#0b5d3b,#1a8c5e);color:white;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:600;">
+          Open in Google Maps
+        </a>
+      </div>
+    `;
+  }
 </script>
 
 </body>

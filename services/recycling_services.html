@@ -5,74 +5,227 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recycling Services | EcoConnect</title>
 
-    <!-- Google Fonts - Poppins -->
+    <!-- Google Fonts - Montserrat & Cinzel -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="../css/style.css">   
+    <style>
+        * {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0b5d3b 0%, #1a8c5e 50%, #2ecc71 100%);
+        }
+
+        /* HEADER */
+        header {
+            background: rgba(11, 93, 59, 0.3);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 15px 30px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #ffffff;
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        /* USER PROFILE */
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #ffffff;
+        }
+
+        .logout-btn {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        /* MAIN CONTENT */
+        .services-section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 30px;
+        }
+
+        .services-section h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-align: center;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .services-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 35px 25px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .service-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            color: #ffffff;
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 13px;
+        }
+    </style>
 </head>
 <body>
-    <section class="services-section">
-  <h2>Processing & Recycling</h2>
-  <p class="services-subtitle">
-    Smart waste processing with environmental impact tracking
-  </p>
 
-  <div class="services-container">
-
-    <!-- Waste Segregation Record -->
-    <div class="service-card" role="button" tabindex="0">
-      <div class="service-icon">🗂️</div>
-      <h3>Waste Segregation Record</h3>
-      <p>
-        Digital recording of segregated waste categories to ensure proper
-        processing and compliance.
-      </p>
+<header>
+    <div class="header-container">
+        <a href="../index.html" class="logo">EcoConnect</a>
+        <div class="user-profile">
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
     </div>
+</header>
 
-    <!-- Recycling vs Landfill Tracking -->
-    <div class="service-card" role="button" tabindex="0">
-      <div class="service-icon">📊</div>
-      <h3>Recycling vs Landfill Tracking</h3>
-      <p>
-        Tracks and compares recycled waste against landfill disposal to
-        reduce environmental impact.
-      </p>
+<section class="services-section">
+    <h2>Processing & Recycling</h2>
+    <p class="services-subtitle">
+        Smart waste processing with environmental impact tracking
+    </p>
+
+    <div class="services-container">
+
+        <!-- Waste Segregation Record -->
+        <div class="service-card" role="button" tabindex="0">
+            <div class="service-icon">🗂️</div>
+            <h3>Waste Segregation Record</h3>
+            <p>
+                Digital recording of segregated waste categories to ensure proper
+                processing and compliance.
+            </p>
+        </div>
+
+        <!-- Recycling vs Landfill Tracking -->
+        <div class="service-card" role="button" tabindex="0">
+            <div class="service-icon">📊</div>
+            <h3>Recycling vs Landfill Tracking</h3>
+            <p>
+                Tracks and compares recycled waste against landfill disposal to
+                reduce environmental impact.
+            </p>
+        </div>
+
+        <!-- E-Waste Handling -->
+        <div class="service-card" role="button" tabindex="0">
+            <div class="service-icon">💻</div>
+            <h3>E-Waste Handling Workflow</h3>
+            <p>
+                Secure collection, processing, and disposal workflow for electronic
+                and hazardous waste.
+            </p>
+        </div>
+
+        <!-- Partner Recycling Centers -->
+        <div class="service-card" role="button" tabindex="0">
+            <div class="service-icon">🏭</div>
+            <h3>Recycling Partner Management</h3>
+            <p>
+                Manages certified recycling centers and assigns waste based on
+                category and capacity.
+            </p>
+        </div>
+
+        <!-- Environmental Impact -->
+        <div class="service-card" role="button" tabindex="0">
+            <div class="service-icon">🌍</div>
+            <h3>Environmental Impact Calculation</h3>
+            <p>
+                Calculates CO₂ reduction and natural resource savings achieved
+                through recycling.
+            </p>
+        </div>
+
     </div>
-
-    <!-- E-Waste Handling -->
-    <div class="service-card" role="button" tabindex="0">
-      <div class="service-icon">💻</div>
-      <h3>E-Waste Handling Workflow</h3>
-      <p>
-        Secure collection, processing, and disposal workflow for electronic
-        and hazardous waste.
-      </p>
-    </div>
-
-    <!-- Partner Recycling Centers -->
-    <div class="service-card" role="button" tabindex="0">
-      <div class="service-icon">🏭</div>
-      <h3>Recycling Partner Management</h3>
-      <p>
-        Manages certified recycling centers and assigns waste based on
-        category and capacity.
-      </p>
-    </div>
-
-    <!-- Environmental Impact -->
-    <div class="service-card" role="button" tabindex="0">
-      <div class="service-icon">🌍</div>
-      <h3>Environmental Impact Calculation</h3>
-      <p>
-        Calculates CO₂ reduction and natural resource savings achieved
-        through recycling.
-      </p>
-    </div>
-
-  </div>
 </section>
+
+<footer>
+    <p>&copy; 2026 EcoConnect. All rights reserved.</p>
+</footer>
+
+<script>
+    function logout() {
+        if (confirm('Are you sure you want to logout?')) {
+            localStorage.removeItem('user');
+            window.location.href = '../auth/login.html';
+        }
+    }
+</script>
 
 </body>
 </html>

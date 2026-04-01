@@ -1,31 +1,185 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Admin Panel | EcoConnect</title>
 
-  <!-- Google Fonts - Poppins -->
+  <!-- Google Fonts - Montserrat & Cinzel -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0b5d3b 0%, #1a8c5e 50%, #2ecc71 100%);
+    }
+
+    /* HEADER */
+    header {
+      background: rgba(11, 93, 59, 0.3);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 15px 30px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Cinzel', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: #ffffff;
+      text-decoration: none;
+      letter-spacing: 2px;
+    }
+
+    .logout-btn {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #ffffff;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    /* MAIN CONTENT */
+    .admin-section {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 30px;
+    }
+
+    .admin-section h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #ffffff;
+      text-align: center;
+      letter-spacing: 2px;
+      margin-bottom: 30px;
+    }
+
+    /* COMPLAINT CARD */
+    .complaint-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      padding: 25px;
+      margin-bottom: 20px;
+      color: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .complaint-info h3 {
+      color: #7dffb3;
+      margin-bottom: 5px;
+    }
+
+    .complaint-info p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 14px;
+    }
+
+    .complaint-card select {
+      padding: 10px 15px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .complaint-card select option {
+      background: #0b5d3b;
+      color: #ffffff;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 13px;
+    }
+  </style>
 </head>
 <body>
 
-<section class="dashboard-section">
-  <h2>Admin Panel</h2>
+<header>
+  <div class="header-container">
+    <a href="../index.html" class="logo">EcoConnect</a>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+</header>
+
+<section class="admin-section">
+  <h1>ADMIN PANEL</h1>
 
   <div class="complaint-card">
-    <p>Location: Sector 62</p>
-    <p>Waste: Plastic</p>
+    <div class="complaint-info">
+      <h3>📍 Sector 62</h3>
+      <p>Waste Type: Plastic | Reported: 2 days ago</p>
+    </div>
     <select>
       <option>Pending</option>
       <option>In Progress</option>
       <option>Collected</option>
     </select>
   </div>
+
+  <div class="complaint-card">
+    <div class="complaint-info">
+      <h3>📍 Near Metro Station</h3>
+      <p>Waste Type: Organic | Reported: 5 days ago</p>
+    </div>
+    <select>
+      <option>Pending</option>
+      <option>In Progress</option>
+      <option selected>Collected</option>
+    </select>
+  </div>
 </section>
+
+<footer>
+  <p>&copy; 2026 EcoConnect. All rights reserved.</p>
+</footer>
+
+<script>
+  function logout() {
+    if (confirm('Are you sure you want to logout?')) {
+      localStorage.removeItem('user');
+      window.location.href = '../auth/login.html';
+    }
+  }
+</script>
 
 </body>
 </html>

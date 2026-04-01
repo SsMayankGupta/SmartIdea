@@ -4,36 +4,176 @@
   <meta charset="UTF-8">
   <title>Waste Segregation Guide | EcoConnect</title>
 
-  <!-- Google Fonts - Poppins -->
+  <!-- Google Fonts - Montserrat & Cinzel -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0b5d3b 0%, #1a8c5e 50%, #2ecc71 100%);
+    }
+
+    /* HEADER */
+    header {
+      background: rgba(11, 93, 59, 0.3);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 15px 30px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Cinzel', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: #ffffff;
+      text-decoration: none;
+      letter-spacing: 2px;
+    }
+
+    .logout-btn {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #ffffff;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    /* MAIN CONTENT */
+    .seg-section {
+      max-width: 600px;
+      margin: 60px auto;
+      padding: 0 30px;
+      text-align: center;
+    }
+
+    .seg-section h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 2px;
+      margin-bottom: 30px;
+    }
+
+    /* GLASS CARD */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 24px;
+      padding: 40px;
+    }
+
+    .glass-card select {
+      width: 100%;
+      padding: 16px 20px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
+      font-size: 16px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+
+    .glass-card select option {
+      background: #0b5d3b;
+      color: #ffffff;
+    }
+
+    #result {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #7dffb3;
+      margin-top: 20px;
+      min-height: 40px;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 13px;
+    }
+  </style>
 </head>
 <body>
 
+<header>
+  <div class="header-container">
+    <a href="../index.html" class="logo">EcoConnect</a>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+</header>
+
 <section class="seg-section">
-  <h2>Smart Waste Segregation</h2>
+  <h1>SMART SEGREGATION</h1>
 
-  <select id="item" onchange="checkWaste()">
-    <option value="">Select an item</option>
-    <option value="wet">Banana Peel</option>
-    <option value="plastic">Plastic Bottle</option>
-    <option value="ewaste">Battery</option>
-  </select>
+  <div class="glass-card">
+    <select id="item" onchange="checkWaste()">
+      <option value="">Select an item to classify</option>
+      <option value="wet">Banana Peel 🍌</option>
+      <option value="plastic">Plastic Bottle 🥤</option>
+      <option value="paper">Newspaper 📰</option>
+      <option value="glass">Glass Bottle 🍾</option>
+      <option value="ewaste">Battery 🔋</option>
+      <option value="metal">Aluminum Can 🥫</option>
+    </select>
 
-  <p id="result" style="margin-top:20px;font-weight:bold"></p>
+    <p id="result"></p>
+  </div>
 </section>
+
+<footer>
+  <p>&copy; 2026 EcoConnect. All rights reserved.</p>
+</footer>
 
 <script>
 function checkWaste() {
   const value = document.getElementById("item").value;
   const result = document.getElementById("result");
 
-  if (value === "wet") result.innerText = "Wet Waste Bin 🍃";
-  if (value === "plastic") result.innerText = "Dry / Plastic Bin ♻️";
-  if (value === "ewaste") result.innerText = "E-Waste Collection 📱";
+  if (value === "wet") result.innerText = "🍃 Wet Waste Bin (Green)";
+  if (value === "plastic") result.innerText = "♻️ Dry / Plastic Bin (Blue)";
+  if (value === "paper") result.innerText = "♻️ Paper Bin (Blue)";
+  if (value === "glass") result.innerText = "♻️ Glass Bin (Blue)";
+  if (value === "ewaste") result.innerText = "📱 E-Waste Collection";
+  if (value === "metal") result.innerText = "♻️ Metal Bin (Blue)";
+  if (value === "") result.innerText = "";
+}
+
+function logout() {
+  if (confirm('Are you sure you want to logout?')) {
+    localStorage.removeItem('user');
+    window.location.href = '../auth/login.html';
+  }
 }
 </script>
 

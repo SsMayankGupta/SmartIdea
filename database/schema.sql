@@ -423,11 +423,11 @@ INSERT INTO quiz_questions (question, options, correct_answer, explanation, cate
 ('What is the first R in the 3Rs of waste management?', '["Reduce", "Reuse", "Recycle", "Repair"]', 0, 'The 3Rs are Reduce, Reuse, and Recycle - in that order of priority.', 'general', 'easy', 10);
 
 -- Insert sample recycling centers (NCR region)
-INSERT INTO recycling_centers (name, type, address, city, state, pincode, phone, operating_hours, accepted_waste_types, services_offered, rating) VALUES
-('Noida Sector 62 Recycling Center', 'municipal', 'Near Metro Station, Sector 62', 'Noida', 'Uttar Pradesh', '201309', '+91-120-1234567', '9:00 AM - 6:00 PM', '["plastic", "paper", "metal", "glass"]', '["drop_off", "pickup", "sorting"]', 4.5),
-('Gurugram Electronic Waste Center', 'private', 'DLF Phase 2, Golf Course Road', 'Gurugram', 'Haryana', '122002', '+91-124-9876543', '10:00 AM - 7:00 PM', '["e_waste", "batteries"]', '["e_waste_collection", "data_destruction", "certification"]', 4.8),
-('Delhi Municipal Recycling Hub', 'municipal', 'Connaught Place, Near Central Park', 'Delhi', 'Delhi', '110001', '+91-11-23456789', '8:00 AM - 8:00 PM', '["plastic", "paper", "metal", "glass", "organic"]', '["drop_off", "composting", "awareness_programs"]', 4.2),
-('Faridabad Green Recycling', 'ngo', 'Sector 15, Main Market', 'Faridabad', 'Haryana', '121007', '+91-129-4567890', '9:00 AM - 5:00 PM', '["plastic", "paper", "old_clothes"]', '["drop_off", "donation_drive", "community_education"]', 4.6);
+INSERT INTO recycling_centers (name, type, address, city, state, pincode, latitude, longitude, phone, operating_hours, accepted_waste_types, services_offered, rating) VALUES
+('Noida Sector 62 Recycling Center', 'municipal', 'Near Metro Station, Sector 62', 'Noida', 'Uttar Pradesh', '201309', 28.6258, 77.3580, '+91-120-1234567', '9:00 AM - 6:00 PM', '["plastic", "paper", "metal", "glass"]', '["drop_off", "pickup", "sorting"]', 4.5),
+('Gurugram Electronic Waste Center', 'private', 'DLF Phase 2, Golf Course Road', 'Gurugram', 'Haryana', '122002', 28.4803, 77.0845, '+91-124-9876543', '10:00 AM - 7:00 PM', '["e_waste", "batteries"]', '["e_waste_collection", "data_destruction", "certification"]', 4.8),
+('Delhi Municipal Recycling Hub', 'municipal', 'Connaught Place, Near Central Park', 'Delhi', 'Delhi', '110001', 28.6304, 77.2177, '+91-11-23456789', '8:00 AM - 8:00 PM', '["plastic", "paper", "metal", "glass", "organic"]', '["drop_off", "composting", "awareness_programs"]', 4.2),
+('Faridabad Green Recycling', 'ngo', 'Sector 15, Main Market', 'Faridabad', 'Haryana', '121007', 28.4089, 77.3178, '+91-129-4567890', '9:00 AM - 5:00 PM', '["plastic", "paper", "old_clothes"]', '["drop_off", "donation_drive", "community_education"]', 4.6);
 
 -- Insert sample events
 INSERT INTO sustainability_events (title, description, event_type, location, city, event_date, event_time, duration_hours, max_participants, points_reward, organizer_name, status) VALUES

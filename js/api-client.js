@@ -3,7 +3,23 @@
  * JavaScript wrapper for backend API integration
  */
 
-const API_BASE_URL = '/ecoconnect/api';
+// Dynamically determine API base URL based on current location
+const API_BASE_URL = (() => {
+    const path = window.location.pathname;
+    // Find the ecoconnect root directory
+    if (path.includes('/pages/')) {
+        return path.substring(0, path.indexOf('/pages/')) + '/api';
+    } else if (path.includes('/auth/')) {
+        return path.substring(0, path.indexOf('/auth/')) + '/api';
+    } else if (path.includes('/services/')) {
+        return path.substring(0, path.indexOf('/services/')) + '/api';
+    } else if (path.includes('/education/')) {
+        return path.substring(0, path.indexOf('/education/')) + '/api';
+    }
+    // Default: assume we're at root
+    const rootPath = path.substring(0, path.lastIndexOf('/') + 1);
+    return rootPath + 'api';
+})();
 
 /**
  * Make API request
